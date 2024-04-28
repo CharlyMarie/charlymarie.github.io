@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Charly Marie"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: work.qmd
+        text: Behavioral science and insights
+      - href: teaching.qmd
+        text: Academic teaching
+      - href: seminars.qmd
+        text: Seminars
+      - href: cv.qmd
+        text: CV
+  search: false
+
+execute:
+  freeze: auto
+  
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: TRUE 
+
+
+

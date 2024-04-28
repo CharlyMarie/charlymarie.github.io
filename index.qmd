@@ -1,0 +1,24 @@
+---
+image: me.jpg
+about:
+  template: trestles
+  links:
+    - text: LinkedIn
+      url: "https://www.linkedin.com/in/charlymarie/"
+    - text: Email
+      url: "mailto:charly.marie.pro@gmail.com"
+comments: false
+---
+
+Hello,
+
+I am a Ph.D. candidate in social-cognitive psychology under the supervision of Prof. [David Bourguignon](https://scholar.google.com/citations?user=dYsZHoQAAAAJ&hl=fr&oi=sra){target="_blank"}. I am also a *behavioral science expert* for the French public employment service.
+
+With a few wonderful co-authors, my work focuses on two main themes: 
+
+::: {} 
+1. The social assignment of the unemployed, its forms and consequences for those who experience it and those who can implement it. 
+2. The use of psychological theories and methods, also known as *behavioral science*, applied to the construction and development of public policies. 
+:::
+
+I also teach at the Sorbonne-Nouvelle University in Paris, France.

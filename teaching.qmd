@@ -1,0 +1,62 @@
+<ul class="title">
+# Since 2023
+<hr style="border:1px solid blue">
+
+</ul>
+
+<ul class="teaching-session">
+
+<li class="session-item">
+
+<h3 class="class-name">
+Introductory psychology
+</h3>
+
+<p class="level">
+Undergraduate Course - Sorbonne-Nouvelle University, Paris, France
+</p>
+
+<p class="position">
+Lecturer
+</p>
+
+::: {.callout-note collapse="true" icon=false appearance="default"}
+## See more
+In this course, I cover:
+<br>
+<br>
+1. **Introduction to psychology.** Definitions of psychology and the scientific method. Introduction to the 3 main paradigms of psychology (psychoanalysis, behaviorism, cognitivism).
+<br>
+<br>
+2. **Introduction to attribution theories.** Definition of an attribution. Introduction to the main attribution model (Weiner, 1985). Introduction to the models of the naive scientist (Jones & Davis, 1965; Kelley, 1967) and the cognitive miser (Gilbert, Pelham & Krull, 1988); Kelley & Michela, 1980).
+<br>
+<br>
+3. **Introduction to cognitive and social categorization, social identity theory, stereotypes, prejudice, and discrimination.** Definition and functions of cognitive categorization. Definition and functions of social categorization. Introduction to self-categorization and social identity theories. Definition and functions of stereotypes, prejudice, and discrimination, with ways to identify them and mitigate their undesirable effects.
+<br>
+<br>
+Throughout the course, I engage in flipped classroom practices, such as sharing the fully written course materials at the beginning of the semester. I also strive to bring contemporary social events into the classroom so that students can apply the many theories and concepts to propose a social psychological understanding of the social world. I also have students suggest final exam questions in each class of the semester to get them generating good questions and to help them clarify their thoughts.
+:::
+------------------------------------------------------------------------
+
+<ul class="title">
+# Course I would like to teach
+<hr style="border:1px solid blue">
+
+</ul>
+
+<ul class="teaching-session">
+
+<li class="session-item">
+
+<h3 class="class-name">
+Behavioral insights and public policy
+</h3>
+
+<p class="position">
+Lecturer
+</p>
+
+::: {.callout-note collapse="true" icon=false appearance="default"}
+## See more
+I would be happy to design a course on applied behavioral insights and public policy. It would cover a range of methods and frameworks for analyzing and offering suggestions for public policy, from a behavioral science and social-cognitive perspective. If you would like to organize this course for your academic program, please contact me :).
+:::

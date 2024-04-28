@@ -1,0 +1,11 @@
+English coming soon :)
+
+<div class="button-container">
+<a>
+    <a href="ADRESS" class="download-link" target="_blank">English</a>
+</a>
+
+<a>
+    <a href="ADRESS" class="download-link" target="_blank">French</a>
+</a>
+</div>
