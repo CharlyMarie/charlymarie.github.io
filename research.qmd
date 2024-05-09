@@ -47,20 +47,12 @@ Keywords: Unemployed; Framing; Media analysis
 
 ------------------------------------------------------------------------
 
-<ul class="title">
-
-# Works in progress
-
-<hr style="border:1px solid blue">
-
-</ul>
-
 <ul class="paper-list">
 
 <li class="paper-item">
 
 <h3 class="paper-title">
-French Translation and Validation of Pinel's Stigma Consciousness Questionnaire Among Unemployed People: Links with Well-Being, Reported Health, Life Satisfaction, Motivation to (re)Work, Job Search Behavior, and Access to Employment 
+French Validation of Pinel's Stigma Consciousness Questionnaire Among Unemployed People: Links with Well-Being, Motivation, objective Job Search Behavior, and Access to Employment
 </h3>
 
 <p class="paper-authors">
@@ -73,7 +65,7 @@ French Translation and Validation of Pinel's Stigma Consciousness Questionnaire 
 
 ::: {.callout-note collapse="true" icon=false appearance="default"}
 ## Abstract
-Previous studies have shown that unemployed people carry a highly negative stigma. We examine whether their expectation of being stigmatized, measured as stigma consciousness, predicts core psychological processes, objective job search behavior, and access to employment both after three months. First, we translated the Stigma Consciousness Questionnaire (Pinel, 1999) into French, and adapted it to a population of jobseekers. Then, we sent a survey to a large and representative sample of unemployed people in France. Finally, responses were linked to administrative databases of the Public Employment Service to assess objective job search behavior and access to employment (N = 30,000; n = 2,055). The scale showed good psychometric properties. Controlling for important confounders, stigma consciousness negatively predicted well-being, reported health, and life satisfaction, and positively predicted social and identified-regulated motivation to (re)work. Three months after responding to our survey, stigma consciousness predicted a more active job search among jobseekers who had been unemployed for at least one year. This did not lead to more reemployment, after three or five months. We provide evidence for a French version of the Stigma Consciousness Questionnaire and highlight its negative associations with core psychological processes among all unemployed people. Our results depict active long-term jobseekers trying to manage their stigma by pursuing an individual mobility strategy. This does not lead to regaining employment, which could make them more stigma conscious and subsequently worsen their well-being, health, and life satisfaction, in turn affecting their ability to work in a detrimental cycle.
+Previous studies have shown that unemployed people carry a highly negative stigma. We examined whether their anticipation of being stigmatized, measured as stigma consciousness, predicted core psychological processes, objective job search behavior, and access to employment both after three months. We first translated the Stigma Consciousness Questionnaire (Pinel, 1999), which was originally designed for women, gay and Black people, into French, and adapted it to a population of jobseekers. We then sent a survey to a large and representative sample of unemployed people (N = 30,000; nrespondents = 2,055). Responses were linked to administrative databases of the French Public Employment Service to assess if stigma consciousness predicted objective job search behavior and access to employment. The scale showed good psychometric properties. Controlling for important confounders, stigma consciousness negatively predicted well-being, reported health, and life satisfaction, and positively predicted social and identified-regulated motivation to (re)work. Three months post-survey, stigma consciousness predicted increased job search efforts among jobseekers who had been unemployed for at least one year. However, this more intensive job search did not result in increased reemployment after three or five months. Our results depict active long-term jobseekers trying to manage their stigma by pursuing an individual mobility strategy, which did not lead to regaining employment. This could potentially increase their stigma consciousness, further deteriorating their well-being, health, and life satisfaction, in turn negatively affecting their ability to work, suggesting a detrimental cycle where stigma consciousness is a crucial factor.
 :::
 
 <p class="paper-pre-registration">
@@ -81,15 +73,22 @@ Hypotheses and methods have been <a href="https://osf.io/wdxjb" target="_blank">
 </p>
 
 <p class="paper-keywords">
-Keywords: Unemployment, Social stigma, Stigma consciousness, Health, Life satisfaction, Well-being, Motivation, Job search behavior, Employment Status, Reemployment
+Keywords: Unemployment, Social stigma, Stigma consciousness, Health, Job search behavior
 </p>
 
-<a>Draft not yet available</a>
-
+<a href="https://osf.io/preprints/psyarxiv/ac89v" class="download-link" target="_blank">Last draft</a>
 
 </li>
 
 ------------------------------------------------------------------------
+
+<ul class="title">
+
+# Works in progress
+
+<hr style="border:1px solid blue">
+
+</ul>
 
 <ul class="paper-list">
 
