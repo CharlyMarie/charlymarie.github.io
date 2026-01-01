@@ -1,0 +1,155 @@
+/* css styles */
+.navbar-container{
+    margin: 0% 3% 0% 3%;
+}
+
+.menu-text{
+    font-size: 17px;
+}
+
+/* Style de texte */
+.title-top {
+    color: #2670A1; /* Couleur du texte */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.title {
+    color: #2670A1; /* Couleur du texte */
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+/* Styles pour les boutons */
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3498db; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #2074a0; /* New background color on hover */
+    color: #fff; /* New text color on hover */
+}
+
+
+/* Style pour le lien de téléchargement */
+.download-link {
+    text-decoration: none;
+    color: #3498db; /* Couleur du texte du lien */
+}
+
+
+.button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px; /* Espacement entre les boutons */
+    text-align: center;
+}
+
+.paper-list {
+    list-style: none;
+    padding: 0;
+}
+
+.paper-item {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.paper-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.book-title {
+    font-size: 14px;
+    color: #5f5f5f;
+}
+
+.paper-authors {
+    font-style: italic;
+    color: #777;
+}
+
+.publication-date {
+    color: #777;
+}
+
+.paper-abstract {
+    font-size: 16px;
+    margin-top: 10px;
+    border-left: 2px solid #3498db;
+    padding-left: 10px;
+}
+
+.paper-pre-registration {
+    font-size: 14px;
+    color: #555;
+}
+
+.paper-congress {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.paper-keywords {
+    font-style: italic;
+    font-size: 14px;
+    color: #555;
+}
+
+.download-link {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.paper-citation {
+    color: #777;
+}
+
+.teaching-session {
+    list-style: none;
+    padding: 0;
+}
+
+.session-item {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.class-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.level {
+    font-style: italic;
+    color: #777;
+}
+
+.position {
+    color: #777;
+}
+
+.syllabus {
+    font-size: 16px;
+    margin-top: 10px;
+    border-left: 2px solid #3498db;
+    padding-left: 10px;
+}
