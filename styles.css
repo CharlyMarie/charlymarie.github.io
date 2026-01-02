@@ -153,3 +153,23 @@
     border-left: 2px solid #3498db;
     padding-left: 10px;
 }
+
+.highlight-box {
+  background-color: #ECF4FC;
+
+  border-top: 2px solid #2780E3;
+  border-bottom: 1px solid rgba(39, 128, 227, 0.4);
+
+  padding: 0.9rem 1rem;
+  margin: 1.2rem 0;
+
+  font-size: 0.95em;
+  line-height: 1.6;
+  
+  margin-left: 0.15in;
+  margin-right: 0.15in;
+}
+
+.highlight-box p:last-child {
+  margin-bottom: 0;
+}
