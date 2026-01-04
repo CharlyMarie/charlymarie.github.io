@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://charlymarie.github.io/blog.html</loc>
-    <lastmod>2026-01-02T14:51:36.824Z</lastmod>
+    <lastmod>2026-01-03T14:00:32.867Z</lastmod>
   </url>
   <url>
     <loc>https://charlymarie.github.io/teaching.html</loc>
@@ -31,5 +31,13 @@
   <url>
     <loc>https://charlymarie.github.io/index.html</loc>
     <lastmod>2025-12-30T09:46:08.314Z</lastmod>
+  </url>
+  <url>
+    <loc>https://charlymarie.github.io/posts/00 - Presentation/00 - Presentation.html</loc>
+    <lastmod>2026-01-04T10:47:33.288Z</lastmod>
+  </url>
+  <url>
+    <loc>https://charlymarie.github.io/posts/Drafts/02 - JCASP 2025 - You re a nobody when you re unemployed.html</loc>
+    <lastmod>2026-01-03T14:01:03.088Z</lastmod>
   </url>
 </urlset>

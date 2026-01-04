@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Ce billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.">
 
-<title>Charly Marie – Blog</title>
+<title>Charly Marie – Pourquoi ce blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,20 +24,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "Pas de résultats",
@@ -52,35 +51,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Recherche"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories','listing-tags',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SGV9X67YFY"></script>
 
 <script type="text/javascript">
@@ -104,49 +74,21 @@ div.callout-calloutabstract.callout-style-default .callout-icon::before, div.cal
 }
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Charly Marie - Blog">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Charly Marie - Pourquoi ce blog">
+<meta property="og:description" content="Ce billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.">
 <meta property="og:site_name" content="Charly Marie">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed indent-paragraphs">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Charly Marie</span>
     </a>
   </div>
@@ -156,31 +98,31 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./work.html"> 
+    <a class="nav-link" href="../../work.html"> 
 <span class="menu-text">Behavioural science</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> 
+    <a class="nav-link" href="../../teaching.html"> 
 <span class="menu-text">Academic teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./seminars.html"> 
+    <a class="nav-link" href="../../seminars.html"> 
 <span class="menu-text">Seminars</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../../cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -194,22 +136,36 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Catégories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Tous <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Vulgarisation scientifique">Vulgarisation scientifique <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Pourquoi ce blog</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Vulgarisation scientifique</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Ce billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 janvier 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -219,51 +175,24 @@ window.Quarto = {
 </header>
 
 
+<hr style="border:1px solid blue">
+<p>Ce blog part d’un constat simple</p>
+<p><strong>D’un côté</strong>, je publie, seul ou avec des co-auteurs et co-autrices, des articles scientifiques en français et en anglais dans des revues académiques, ainsi que des chapitres d’ouvrages (et peut-être un jour des livres ?). Ces productions reposent sur des standards élevés de rigueur méthodologique et théorique. Elles sont évaluées, discutées et critiquées par les pairs. <strong>De l’autre</strong>, le format, la langue et les codes de ces travaux limitent l’accessibilité pour des personnes extérieures au monde académique. Ce blog vise précisément à réduire cet écart, en (1) rendant les travaux auxquels je participe plus compréhensibles et (2) en les diffusant au-delà des espaces académiques habituels.</p>
+<div class="highlight-box">
+<p>L’objectif est donc de rendre ces résultats lisibles, de traduire ces recherches, sans en effacer la complexité : expliquer comment les travaux ont été réalisés, ce qu’ils montrent, comment ils permettent de comprendre certains phénomènes sociaux, et les limites de ces conclusions.</p>
+</div>
+<p>Les raisons sont multiples :</p>
+<ul>
+<li><strong>D’abord</strong>, produire des connaissances implique à mes yeux d’en rendre compte publiquement, d’en expliciter les apports et les limites, et d’accepter qu’elles soient discutées en dehors du cercle des pairs. C’est une conception particulière du métier de chercheur, qui considère que la recherche s’inscrit dans un espace social plus large que le seul monde académique.</li>
+<li><strong>Ensuite</strong>, les sciences sociales permettent de mieux comprendre les mécanismes sociaux, institutionnels et psychologiques, de déplacer le regard et de questionner des évidences. Elles n’offrent pas de réponses toutes faites, mais apportent des outils pour penser autrement des problèmes complexes.</li>
+<li><strong>Finalement</strong>, une part importante de ces travaux est financée par la collectivité. Il m’apparaît donc légitime de lui rendre des comptes, et peut-être même d’éclairer des questions qu’elle se pose.</li>
+</ul>
+<p>Dans un premier temps, les billets publiés ici s’appuieront sur des travaux publiés auxquels j’ai participé, seul ou avec des co-auteurs et co-autrices. Chaque texte en proposera une synthèse structurée, attentive aux résultats centraux, aux mécanismes identifiés, et aux implications de recherche mais aussi et surtout pour les professionnel·le·s, associatif·ve·s, et politiques publiques.</p>
+<p>Plus tard, qui sait où nous irons? D’autres travaux que ceux auxquels je participe, des notes méthodologiques, des tutoriels empiriques, des réflexions théoriques… :)</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filtre">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Vulgarisation scientifique" data-listing-date-sort="1767567600000" data-listing-file-modified-sort="1767523653288" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/00 - Presentation/00 - Presentation.html" class="no-external">Pourquoi ce blog</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/00 - Presentation/00 - Presentation.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Vulgarisation scientifique'); return false;">
-Vulgarisation scientifique
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/00 - Presentation/00 - Presentation.html" class="no-external">Ce billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/00 - Presentation/00 - Presentation.html" class="no-external">
-<div class="listing-date">
-5 janv. 2026
-</div>
-<div class="metadata-value listing-tags">
-Psychologie sociale,Politiques publiques,Recherche académique
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-Aucun article correspondant
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

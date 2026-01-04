@@ -163,7 +163,7 @@
   padding: 0.9rem 1rem;
   margin: 1.2rem 0;
 
-  font-size: 0.95em;
+  font-size: 18px;
   line-height: 1.6;
   
   margin-left: 0.15in;
@@ -172,4 +172,8 @@
 
 .highlight-box p:last-child {
   margin-bottom: 0;
+}
+
+body.indent-paragraphs p {
+  text-indent: 1.25em;
 }
