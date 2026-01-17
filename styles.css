@@ -170,10 +170,13 @@
   margin-right: 0.15in;
 }
 
-.highlight-box p:last-child {
+body.indent-paragraphs main .highlight-box p {
+  text-align: center;
+  text-indent: 0;
   margin-bottom: 0;
 }
 
-body.indent-paragraphs p {
-  text-indent: 1.25em;
-}
+body.indent-paragraphs main p { text-indent: 1.25em; }
+body.indent-paragraphs main .cell-output p,
+body.indent-paragraphs main .cell-output-display p,
+body.indent-paragraphs main .cell p { text-indent: 0; }
