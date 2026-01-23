@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Ce billet analyse la manière dont les personnes au chômage sont perçues en France, la structure de ces jugements et leurs conséquences, à partir du papier Marie et al. (2025).">
+
+<title>Charly Marie – ‘’Tu n’es personne quand tu es au chômage’’ : ce que les stéréotypes disent du chômage</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SGV9X67YFY"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SGV9X67YFY', { 'anonymize_ip': true});
+</script>
+<meta name="quarto:status" content="draft">
+<style>
+div.callout-calloutabstract.callout {
+  border-left-color: #ECF4FC;
+}
+div.callout-calloutabstract.callout-style-default > .callout-header {
+  background-color: rgba(236, 244, 252, 0.13);
+}
+div.callout-calloutabstract .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path></svg>');}
+div.callout-calloutabstract.callout-style-default .callout-icon::before, div.callout-calloutabstract.callout-titled .callout-icon::before {
+  content: '📝';
+  background-image: none;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Charly Marie - ‘’Tu n’es personne quand tu es au chômage’’ : ce que les stéréotypes disent du chômage">
+<meta property="og:description" content="Ce billet analyse la manière dont les personnes au chômage sont perçues en France, la structure de ces jugements et leurs conséquences, à partir du papier Marie et al. (2025).">
+<meta property="og:site_name" content="Charly Marie">
+</head>
+
+<body class="nav-fixed indent-paragraphs">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Brouillon</div>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Charly Marie</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../work.html"> 
+<span class="menu-text">Behavioural science</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Academic teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../seminars.html"> 
+<span class="menu-text">Seminars</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#résumé" id="toc-résumé" class="nav-link active" data-scroll-target="#résumé">Résumé</a></li>
+  <li><a href="#point-de-départ" id="toc-point-de-départ" class="nav-link" data-scroll-target="#point-de-départ">Point de départ</a></li>
+  <li><a href="#cadres-théoriques-mobilisés" id="toc-cadres-théoriques-mobilisés" class="nav-link" data-scroll-target="#cadres-théoriques-mobilisés">Cadres théoriques mobilisés</a></li>
+  <li><a href="#ce-que-nous-faisons" id="toc-ce-que-nous-faisons" class="nav-link" data-scroll-target="#ce-que-nous-faisons">Ce que nous faisons</a></li>
+  <li><a href="#ce-que-nous-montrons" id="toc-ce-que-nous-montrons" class="nav-link" data-scroll-target="#ce-que-nous-montrons">Ce que nous montrons</a></li>
+  <li><a href="#ce-que-cela-peut-changer-dans-la-manière-de-voir-le-chômage" id="toc-ce-que-cela-peut-changer-dans-la-manière-de-voir-le-chômage" class="nav-link" data-scroll-target="#ce-que-cela-peut-changer-dans-la-manière-de-voir-le-chômage">Ce que cela peut changer dans la manière de voir le chômage</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">‘’Tu n’es personne quand tu es au chômage’’ : ce que les stéréotypes disent du chômage</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Vulgarisation scientifique</div>
+    <div class="quarto-category">Chômage et emploi</div>
+    <div class="quarto-category">Stigmatisation</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Ce billet analyse la manière dont les personnes au chômage sont perçues en France, la structure de ces jugements et leurs conséquences, à partir du papier <span class="citation" data-cites="MarieBouchatBourguignon2025">Marie et al. (<a href="#ref-MarieBouchatBourguignon2025" role="doc-biblioref">2025</a>)</span>.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">3 mai 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr style="border:1px solid blue">
+<section id="résumé" class="level1">
+<h1>Résumé</h1>
+<p>La littérature montre de longue date que le chômage est associé à des conséquences négatives sur la santé, le bien-être et les trajectoires professionnelles. Ces effets ne s’expliquent pas uniquement par la perte de revenu ou d’activité. Ils sont aussi liés au regard porté sur les personnes au chômage. Ce billet s’appuie sur un article scientifique que j’ai mené pour analyser la structure des stéréotypes associés au chômage. En mobilisant les travaux sur le contenu des stéréotypes et sur la déshumanisation, nous montrons que les personnes au chômage sont perçues comme particulièrement faibles sur des dimensions centrales du jugement humain, et parfois même comme moins pleinement humaines. Ces représentations ne sont pas marginales : elles sont partagées par différents publics, notamment des professionnel·le·s de l’insertion. En clarifiant la structure de ces jugements, ce travail permet de mieux comprendre pourquoi la stigmatisation du chômage est persistante et en quoi elle constitue un enjeu de politiques publiques.</p>
+</section>
+<section id="point-de-départ" class="level1">
+<h1>Point de départ</h1>
+<p>Une abondante littérature a documenté les conséquences du chômage sur la santé mentale et physique, ainsi que sur le bien-être <span class="citation" data-cites="Brand2015 Wanberg2012">(<a href="#ref-Brand2015" role="doc-biblioref">Brand, 2015</a>; <a href="#ref-Wanberg2012" role="doc-biblioref">Wanberg, 2012</a>)</span>. Des travaux en psychologie, en économie et en santé publique montrent des niveaux plus élevés de détresse psychologique, de dépression ou d’anxiété chez les personnes au chômage, ainsi que des discriminations à l’embauche persistantes. Ces constats sont robustes et largement cumulés.</p>
+<p>Cependant, la littérature sur le chômage se concentre le plus souvent sur les personnes : leurs ressources, leurs stratégies, leur motivation ou leur employabilité. Cette focale laisse en partie dans l’ombre une dimension centrale du chômage : il s’agit d’une position sociale définie par le regard d’autrui. De nombreux travaux ont pourtant montré que le chômage est une identité socialement dévalorisée, construite dans des contextes culturels et institutionnels spécifiques <span class="citation" data-cites="link2001conceptualizing MajorOBrien2005">(<a href="#ref-link2001conceptualizing" role="doc-biblioref">Link &amp; Phelan, 2001</a>; <a href="#ref-MajorOBrien2005" role="doc-biblioref">Major &amp; O’Brien, 2005</a>)</span>.</p>
+<p>Par exemple, <span class="citation" data-cites="DhertBaertLippens2024">D’hert et al. (<a href="#ref-DhertBaertLippens2024" role="doc-biblioref">2024</a>)</span> synthétisent 28 études qui testent l’effet de la durée de chômage sur le taux de rappel par des recruteurs et recruteuses suite à une candidature. Pour le dire simplement, ces études envoient des CVs en réponse à des offres d’emploi et font aléatoirement varier (1) le statut (en emploi / au chômage) et (2) la durée de chômage (de 0 à 36 mois au maximum dans une étude). Les auteurs montrent qu’à CV égal :</p>
+<ul>
+<li>Jusqu’à 6 mois, les personnes auraient un léger avantage. Cela pourrait découler d’un signal d’employabilité immédiate.</li>
+<li>A partir de 12 mois, les personnes sont moins recontactées suite à une candidature, avec une baisse autour de 20 % de taux de rappel.</li>
+<li>A compter de 18 mois, le taux de rappel chute d’environ 30 %.</li>
+</ul>
+<p>On observe donc un cercle vicieux : plus une personne est au chômage depuis longtemps, plus il lui est difficile d’en sortir, <em>pour partie du seul fait d’être au chômage</em>. Et cette discrimination découle directement des stéréotypes associés aux “chômeurs” (cf.&nbsp;le <a href="">post sur le modèle de <span class="citation" data-cites="fox2018misf">Fox et al. (<span>2018</span>)</span></a>). Cependant, nous manquions de travaux précisément sur le sujet des stéréotypes liés au chômage et aux “chômeurs”, d’autant plus en contexte français.</p>
+<p>Dans ce contexte, comprendre la stigmatisation associée au chômage suppose d’aller au-delà d’un constat général selon lequel “les chômeurs sont mal perçus” pour comprendre <em>comment</em> ils sont perçus et <em>selon quelles dimensions</em> de leurs stéréotypes.</p>
+</section>
+<section id="cadres-théoriques-mobilisés" class="level1">
+<h1>Cadres théoriques mobilisés</h1>
+<p>Ces stéréotypes sont autant d’images dans nos têtes, un ensemble de connaissances et de schémas mentaux appris et bien incorporés, que l’on peut éventuellement personnellement rejeter, mais que l’on connaît cependant <span class="citation" data-cites="LeyensYzerbytSchadron1994">(<a href="#ref-LeyensYzerbytSchadron1994" role="doc-biblioref">Leyens et al., 1994</a>)</span>. Les stéréotypes sont fonctionnels : ils servent à simplifier le monde qui nous entoure et sa complexité en autant de petites boîtes qui homogénéisent et lissent les différences qui existent pourtant au sein d’une catégorie. Autrement dit, on peut connaître un stéréotype et ne pas l’utiliser. Mais, dans certaines situations de fatigue, de stress, ou encore lorsqu’une décision rapide est nécessaire, les stéréotypes peuvent refaire surface et influencer la prise de décision.</p>
+<p>D’une part, nous mobilisons les recherches sur le contenu des stéréotypes, qui montrent que les groupes sont évalués selon des dimensions cognitives fondamentales et stables <span class="citation" data-cites="AbeleEtAl2021">(<a href="#ref-AbeleEtAl2021" role="doc-biblioref">Abele et al., 2021</a>)</span>. Les deux principales dimensions sont définies comme <em>verticale</em> et <em>horizontale</em> :</p>
+<ul>
+<li>La dimensions verticale renvoie à l’évaluation de la capacité d’un individu ou d’un groupe à réussir, c’est à dire à atteindre des objectifs et à occuper une position élevée dans la hiérarchie sociale, lui apportant du prestige et du pouvoir.
+<ul>
+<li>La capacité, les compétences, l’efficacité et les aptitudes permettant d’atteindre des buts.</li>
+<li>L’assertivité, la tendance à s’affirmer, à influencer autrui, à prendre des décisions.</li>
+</ul></li>
+<li>La dimension horizontale renvoie à l’évaluation de la capacité d’un individu ou d’un groupe à bien s’entendre avec autrui, c’est à dire à être un partenaire social fiable et coopératif. Cette dimension est à nouveau divisée en deux facettes.
+<ul>
+<li>La moralité, les intentions perçues comme honnêtes, sincères, fiables et le respect des normes sociales.</li>
+<li>La sociabilité, le style relationnel général, l’amabilité, la bienveillance, la convivialité.</li>
+</ul></li>
+</ul>
+<p>D’autre part, nous nous appuyons sur la littérature sur la stigmatisation et la déshumanisation, qui montre que certains groupes peuvent être perçus comme moins pleinement humains, ce qui facilite leur mise à distance et la justification des inégalités <span class="citation" data-cites="KteilyEtAl2015">(<a href="#ref-KteilyEtAl2015" role="doc-biblioref">Kteily et al., 2015</a>)</span>. Ces approches permettent d’explorer l’aspect cognitif du stigmate de “chômeur”, pour analyser finement le contenu des stéréotypes associés au chômage et mieux comprendre certains résultats comme par exemple les discriminations à l’embauche décrite ci-dessus.</p>
+</section>
+<section id="ce-que-nous-faisons" class="level1">
+<h1>Ce que nous faisons</h1>
+<p>L’étude repose sur deux populations complémentaires. D’une part, deux échantillons d’étudiants et d’étudiantes (<em>n</em> = 241 &amp; <em>n</em> = 193) permet de cartographier le stéréotype des personnes au chômage tel qu’il circule largement dans la société. D’autre part, un échantillon de professionnel·le·s de l’insertion (<em>n</em> = 123) permet de répliquer ces résultats auprès d’une population importante dans la vie des personnes sans emploi, et d’examiner ces mêmes représentations dans un contexte institutionnel d’accompagnement.</p>
+<p>Pour ce faire, nous demandons simplement aux participants et participantes d’évaluer des groupes comme par exemple “les chômeurs” ou “les travailleurs” sur un ensemble de dimensions psychologiques, via une enquête.</p>
+</section>
+<section id="ce-que-nous-montrons" class="level1">
+<h1>Ce que nous montrons</h1>
+<p>Les résultats montrent que les personnes au chômage sont associées à des stéréotypes fortement négatifs, structurés et cohérents avec des travaux déjà publiés par le passé , en France <span class="citation" data-cites="CamusBerjot2015">(<a href="#ref-CamusBerjot2015" role="doc-biblioref">Camus &amp; Berjot, 2015</a>)</span> ou encore en Allemagne <span class="citation" data-cites="Asbrock2010 FriehsAparicioLukassowitzWagner2022">(<a href="#ref-Asbrock2010" role="doc-biblioref">Asbrock, 2010</a>; <a href="#ref-FriehsAparicioLukassowitzWagner2022" role="doc-biblioref">Friehs et al., 2022</a>)</span>. D’abord, elles sont perçues comme faibles sur des dimensions verticales et horizontales de l’évaluation sociale.</p>
+<p>En allant au-delà de ces dimensions générales, nous montrons que les personnes au chômage sont perçues comme faibles sur les facettes de leurs stéréoypes, c’est à dire peu capables, peu assertives et peu productives. Elles sont également perçues comme moralement déficientes au sein de l’échantillon d’étudiants et d’étudiantes, mais pas auprès des professionnel·le·s de l’insertion. Cette combinaison dessine une représentation d’individus perçus comme socialement peu utiles et comme étant de mauvais partenaires sociaux.</p>
+<p>Nous montrons également que ces stéréotypes peuvent s’accompagner d’une forme de déshumanisation flagrante. Les personnes au chômage apparaissent alors comme moins pleinement humaines, ce qui est un mécanisme bien documenté pour expliquer la mise à distance ou accepter des traitements inéquitables. Pour être honnête, je ne m’attendais pas à ce résultat : la question posée était “Les groupes d’individus peuvent varier dans leur degré d’humanité. Certaines personnes paraissent très évoluées alors que d’autres n’ont pas l’air très différentes des animaux. A partir de l’image suivante, veuillez indiquer à l’aide du curseur à quel point vous considérez les membres des groupes suivants du point de vue de l’évolution.” Je sais, ce n’est pas dans la finesse, et c’est justement tout l’intérêt de cette mesure. Qui peut imaginer répondre, de façon honnête, que certains groupes ne sont “pas très différents des animaux” ? Pour les “chômeurs”, visiblement, ça n’a pas posé de problèmes à certaines personnes…</p>
+<p>Enfin, ces représentations ne sont pas limitées au grand public. Elles sont observables, à des degrés divers, chez des professionnel·le·s travaillant dans le champ de l’insertion et de l’accompagnement, ce qui souligne leur caractère largement partagé.</p>
+</section>
+<section id="ce-que-cela-peut-changer-dans-la-manière-de-voir-le-chômage" class="level1">
+<h1>Ce que cela peut changer dans la manière de voir le chômage</h1>
+<p>D’abord, ces résultats rappellent que le chômage est une position et une définition en creux, en négatif de l’emploi. Cela peut paraître normal, mais la recherche s’est surtout intéressée à l’aspect individuel du chômage. Par exemple, les discriminations à l’embauche décrites plus tôt sont expliqués par un signal négatif de compétences (autrement dit, si les personnes étaient compétentes, elles auraient déjà été recrutées). Ce travail permet de décentrer cette perspective, et de rappeler que ces discriminations peuvent apparaître du fait du regard porté sur un groupe plutôt que sur une personne. Voudriez-vous embaucher une personne dont vous considérez qu’elle appartient à un groupe considéré comme en déficit de capacité (incompétence et inefficacité), d’assertivité (faible autonomie), de moralité (on ne peut pas lui faire confiance) et de sociabilité (des difficultés à travailler en équipe et à intégrer un collectif) ? Peut-être pas.</p>
+<p>Ensuite, ces résultats amènent à réfléchir sur les politiques déployées et les interactions au sein des dispositifs d’accompagnement du chômage. Un grand nombre d’actions se concentrent sur les personnes au chômage et proposent notamment des ateliers CVs et rédaction de lettre de motivation, ou encore une formation aux savoir-être. Or, le seul fait d’être perçu comme “chômeur” dévalorise la personne sur la dimension horizonale et les facettes de moralité et de sociabilité, qui renvoient précisément aux savoir-être.</p>
+<p>Le sujet devient alors non pas “comment et à quoi former ?” mais “comment éviter d’être stéréotypé comme chômeur ?”. Par exemple :</p>
+<ul>
+<li>Construire des CVs qui mettent l’accent sur le nombre d’années d’expérience professionnelle du candidat·e, plutôt que sur les dates d’emploi, qui peuvent faire ressortir les interruptions de carrière. <span class="citation" data-cites="KristalEtAl2023">Kristal et al. (<a href="#ref-KristalEtAl2023" role="doc-biblioref">2023</a>)</span> montrent que faire évoluer l’architecture cognitive des CVs en ce sens est une bonne piste pour réduire les discriminations à l’embauche.</li>
+<li>Utiliser des méthodes de recrutement éprouvées, comme les entretiens standardisés. <span class="citation" data-cites="Ryancentury">Ryan &amp; Ployhart (<a href="#ref-Ryancentury" role="doc-biblioref">2014</a>)</span> font une synthèse d’un siècle de littérature sur le sujet, et rappellent qu’un bon recrutement (1) s’appuie sur de bonnes méthodes et (2) est positif pour l’ensemble des parties.</li>
+<li>Modifier, de bout en bout, les processus de recrutement. C’est un sujet passionnant, sur lequel des équipes françaises se penchent depuis maintenant une trentaine d’années <span class="citation" data-cites="Auvin2021">(<a href="#ref-Auvin2021" role="doc-biblioref">Auvin, 2021</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-AbeleEtAl2021" class="csl-entry" role="listitem">
+Abele, A. E., Ellemers, N., Fiske, S. T., Koch, A., &amp; Yzerbyt, V. (2021). Navigating the Social World: Toward an Integrated Framework for Evaluating Self, Individuals, and Groups. <em>Psychological Review</em>, <em>128</em>(2), 290‑314. <a href="https://doi.org/10.1037/rev0000262">https://doi.org/10.1037/rev0000262</a>
+</div>
+<div id="ref-Asbrock2010" class="csl-entry" role="listitem">
+Asbrock, F. (2010). Stereotypes of Social Groups in Germany in Terms of Warmth and Competence. <em>Social Psychology</em>, <em>41</em>(2), 76‑81. <a href="https://doi.org/10.1027/1864-9335/a000011">https://doi.org/10.1027/1864-9335/a000011</a>
+</div>
+<div id="ref-Auvin2021" class="csl-entry" role="listitem">
+Auvin, T. (2021). <em>La médiation active à l’emploi, un outil pour lutter contre le chômage des publics précaires : Définition, étude des pratiques et de l’impact de la méthode IOD sur l’emploi durable</em> [Thèse de doctorat en psychologie]. Université de Bordeaux.
+</div>
+<div id="ref-Brand2015" class="csl-entry" role="listitem">
+Brand, J. E. (2015). The Far-Reaching Impact of Job Loss and Unemployment. <em>Annual Review of Sociology</em>, <em>41</em>, 359‑375. <a href="https://doi.org/10.1146/annurev-soc-071913-043237">https://doi.org/10.1146/annurev-soc-071913-043237</a>
+</div>
+<div id="ref-CamusBerjot2015" class="csl-entry" role="listitem">
+Camus, G., &amp; Berjot, S. (2015). Comment sont perçues les personnes au chômage au sein de la société française ? Étude de la composition du stéréotype. <em>Les Cahiers Internationaux de Psychologie Sociale</em>, <em>1</em>(105), 53‑81. <a href="https://doi.org/10.3917/cips.105.0053">https://doi.org/10.3917/cips.105.0053</a>
+</div>
+<div id="ref-DhertBaertLippens2024" class="csl-entry" role="listitem">
+D’hert, L., Baert, S., &amp; Lippens, L. (2024). <em>Unemployment, Inactivity, and Hiring Chances: A Systematic Review and Meta-Analysis</em> (IZA Discussion Paper 17141). IZA Institute of Labor Economics. <a href="https://ssrn.com/abstract=4898321">https://ssrn.com/abstract=4898321</a>
+</div>
+<div id="ref-fox2018misf" class="csl-entry" role="listitem">
+Fox, A. B., Earnshaw, V. A., Taverna, E. C., &amp; Vogt, D. (2018). Conceptualizing and Measuring Mental Illness Stigma: The Mental Illness Stigma Framework and Critical Review of Measures. <em>Stigma and Health</em>, <em>3</em>(4), 348‑376. <a href="https://doi.org/10.1037/sah0000104">https://doi.org/10.1037/sah0000104</a>
+</div>
+<div id="ref-FriehsAparicioLukassowitzWagner2022" class="csl-entry" role="listitem">
+Friehs, M.-T., Aparicio Lukassowitz, F., &amp; Wagner, U. (2022). Stereotype Content of Occupational Groups in Germany. <em>Journal of Applied Social Psychology</em>, <em>52</em>, 459‑475. <a href="https://doi.org/10.1111/jasp.12872">https://doi.org/10.1111/jasp.12872</a>
+</div>
+<div id="ref-KristalEtAl2023" class="csl-entry" role="listitem">
+Kristal, A. S., Nicks, L., Gloor, J. L., &amp; Hauser, O. P. (2023). Reducing Discrimination against Job Seekers with and without Employment Gaps. <em>Nature Human Behaviour</em>, <em>7</em>, 211‑218. <a href="https://doi.org/10.1038/s41562-022-01485-6">https://doi.org/10.1038/s41562-022-01485-6</a>
+</div>
+<div id="ref-KteilyEtAl2015" class="csl-entry" role="listitem">
+Kteily, N., Bruneau, E., Waytz, A., &amp; Cotterill, S. (2015). The Ascent of Man: Theoretical and Empirical Evidence for Blatant Dehumanization. <em>Journal of Personality and Social Psychology</em>, <em>109</em>(5), 901‑931. <a href="https://doi.org/10.1037/pspp0000048">https://doi.org/10.1037/pspp0000048</a>
+</div>
+<div id="ref-LeyensYzerbytSchadron1994" class="csl-entry" role="listitem">
+Leyens, J.-P., Yzerbyt, V., &amp; Schadron, G. (1994). <em>Stereotypes and Social Cognition</em>. Sage Publications.
+</div>
+<div id="ref-link2001conceptualizing" class="csl-entry" role="listitem">
+Link, B. G., &amp; Phelan, J. C. (2001). Conceptualizing stigma. <em>Annual Review of Sociology</em>, <em>27</em>, 363‑385. <a href="https://doi.org/10.1146/annurev.soc.27.1.363">https://doi.org/10.1146/annurev.soc.27.1.363</a>
+</div>
+<div id="ref-MajorOBrien2005" class="csl-entry" role="listitem">
+Major, B., &amp; O’Brien, L. T. (2005). The Social Psychology of Stigma. <em>Annual Review of Psychology</em>, <em>56</em>, 393‑421. <a href="https://doi.org/10.1146/annurev.psych.56.091103.070137">https://doi.org/10.1146/annurev.psych.56.091103.070137</a>
+</div>
+<div id="ref-MarieBouchatBourguignon2025" class="csl-entry" role="listitem">
+Marie, C., Bouchat, P., &amp; Bourguignon, D. (2025). <span>«&nbsp;You’re a Nobody When You’re Unemployed&nbsp;»</span>: Exploring the Content of Unemployed People’s Stereotype. <em>Journal of Community &amp; Applied Social Psychology</em>, <em>35</em>, 1‑15. <a href="https://doi.org/10.1002/casp.70085">https://doi.org/10.1002/casp.70085</a>
+</div>
+<div id="ref-Ryancentury" class="csl-entry" role="listitem">
+Ryan, A. M., &amp; Ployhart, R. E. (2014). A Century of Selection. <em>Annual Review of Psychology</em>, <em>65</em>(Volume 65, 2014), 693‑717. <a href="https://doi.org/10.1146/annurev-psych-010213-115134">https://doi.org/10.1146/annurev-psych-010213-115134</a>
+</div>
+<div id="ref-Wanberg2012" class="csl-entry" role="listitem">
+Wanberg, C. R. (2012). The Individual Experience of Unemployment. <em>Annual Review of Psychology</em>, <em>63</em>, 369‑396. <a href="https://doi.org/10.1146/annurev-psych-120710-100500">https://doi.org/10.1146/annurev-psych-120710-100500</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/charlymarie\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

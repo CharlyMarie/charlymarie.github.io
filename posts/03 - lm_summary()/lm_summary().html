@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm.">
+
+<title>Charly Marie – Transformer une sortie R (moche) en table de résultats (belle)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SGV9X67YFY"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SGV9X67YFY', { 'anonymize_ip': true});
+</script>
+<style>
+div.callout-calloutabstract.callout {
+  border-left-color: #ECF4FC;
+}
+div.callout-calloutabstract.callout-style-default > .callout-header {
+  background-color: rgba(236, 244, 252, 0.13);
+}
+div.callout-calloutabstract .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path></svg>');}
+div.callout-calloutabstract.callout-style-default .callout-icon::before, div.callout-calloutabstract.callout-titled .callout-icon::before {
+  content: '📝';
+  background-image: none;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Charly Marie - Transformer une sortie R (moche) en table de résultats (belle)">
+<meta property="og:description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm.">
+<meta property="og:image" content="https://charlymarie.github.io/posts/03 - lm_summary()/data:image/png;base64, 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">
+<meta property="og:site_name" content="Charly Marie">
+</head>
+
+<body class="nav-fixed indent-paragraphs">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Charly Marie</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../work.html"> 
+<span class="menu-text">Behavioural science</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Academic teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../seminars.html"> 
+<span class="menu-text">Seminars</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#point-de-départ" id="toc-point-de-départ" class="nav-link active" data-scroll-target="#point-de-départ">Point de départ</a></li>
+  <li><a href="#références" id="toc-références" class="nav-link" data-scroll-target="#références">Références</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Transformer une sortie <code>R</code> (moche) en table de résultats (belle)</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Modèle linéaire</div>
+    <div class="quarto-category">Fonction</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Les utilisateurs et utilisatrices de <code>R</code> le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type <code>lm</code>.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 janvier 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr style="border:1px solid blue">
+<section id="point-de-départ" class="level1">
+<h1>Point de départ</h1>
+<p>Toute personne qui a déjà utilisé <code>R</code> est déjà arrivée à la conclusion assez simple que <em>les sorties en base <code>R</code> sont (très) moches et pas (du tout) pratiques</em>. Commençons par un exemple, pour lequel j’utilise le jeu de données <code>penguins</code>, qui contient les observations réalisées sur 344 manchots en Antarctique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="palmerpenguins">(<a href="#ref-palmerpenguins" role="doc-biblioref">Horst et al., 2020</a>)</span>.</p>
+<p>Ce jeu contient une information par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l’année de ces mesures.</p>
+<p>Partons d’une question simple : qu’est-ce qui détermine la masse d’un manchot ? Assez naïvement, je penserais à l’espèce et au sexe du manchot. Nous avons la masse d’un manchot en gramme, le sexe du manchot (mâle ou femelle) et l’espèce du manchot (adélie, jugulaire ou papou<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Charger les packages ####</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt);</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">~</span> <span class="st">"Adélie"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Chinstrap"</span> <span class="sc">~</span> <span class="st">"Jugulaire"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Gentoo"</span> <span class="sc">~</span> <span class="st">"Papou"</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"Femelle"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"Mâle"</span>)) <span class="sc">%&gt;%</span> <span class="co"># Traduire les données</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">masse =</span> body_mass_g,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">espece =</span> species,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexe =</span> sex) <span class="co"># Renommer les colonnes</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(masse, espece, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.x)),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.x), <span class="st">"Manquant"</span>, .x))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datasummary_skim</span>()</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-descriptive" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_vlm160hv5va8wtcxq0ex = TinyTable.createTableFunctions("tinytable_vlm160hv5va8wtcxq0ex");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '8', j: 1 }, { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 }, { i: '8', j: 5 }, { i: '8', j: 6 }, { i: '8', j: 7 }, { i: '8', j: 8 }, { i: '8', j: 9 } ], css_id: 'tinytable_css_c3811spw25r609chpss0',}, 
+          { positions: [ { i: '2', j: 1 }, { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 }, { i: '2', j: 6 }, { i: '2', j: 7 }, { i: '2', j: 8 }, { i: '2', j: 9 } ], css_id: 'tinytable_css_8iuaxlfvw9fap44d0dkl',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_alv7blbtodqitjby5li9',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_vlm160hv5va8wtcxq0ex.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_c3811spw25r609chpss0, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_c3811spw25r609chpss0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_8iuaxlfvw9fap44d0dkl, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_8iuaxlfvw9fap44d0dkl {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_alv7blbtodqitjby5li9, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_alv7blbtodqitjby5li9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_vlm160hv5va8wtcxq0ex" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Unique</th>
+                <th scope="col" data-row="0" data-col="3">Missing Pct.</th>
+                <th scope="col" data-row="0" data-col="4">Mean</th>
+                <th scope="col" data-row="0" data-col="5">SD</th>
+                <th scope="col" data-row="0" data-col="6">Min</th>
+                <th scope="col" data-row="0" data-col="7">Median</th>
+                <th scope="col" data-row="0" data-col="8">Max</th>
+                <th scope="col" data-row="0" data-col="9">Histogram</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">masse</td>
+                  <td data-row="1" data-col="2">95</td>
+                  <td data-row="1" data-col="3">1</td>
+                  <td data-row="1" data-col="4">4201.8</td>
+                  <td data-row="1" data-col="5">802.0</td>
+                  <td data-row="1" data-col="6">2700.0</td>
+                  <td data-row="1" data-col="7">4050.0</td>
+                  <td data-row="1" data-col="8">6300.0</td>
+                  <td data-row="1" data-col="9"><img src="data:image/png;base64, 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" style="height: 1em;" class="figure-img"></td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2"></td>
+                  <td data-row="2" data-col="3">N</td>
+                  <td data-row="2" data-col="4">%</td>
+                  <td data-row="2" data-col="5"> </td>
+                  <td data-row="2" data-col="6"> </td>
+                  <td data-row="2" data-col="7"> </td>
+                  <td data-row="2" data-col="8"> </td>
+                  <td data-row="2" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">espece</td>
+                  <td data-row="3" data-col="2">Adélie</td>
+                  <td data-row="3" data-col="3">152</td>
+                  <td data-row="3" data-col="4">44.2</td>
+                  <td data-row="3" data-col="5"> </td>
+                  <td data-row="3" data-col="6"> </td>
+                  <td data-row="3" data-col="7"> </td>
+                  <td data-row="3" data-col="8"> </td>
+                  <td data-row="3" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">Jugulaire</td>
+                  <td data-row="4" data-col="3">68</td>
+                  <td data-row="4" data-col="4">19.8</td>
+                  <td data-row="4" data-col="5"> </td>
+                  <td data-row="4" data-col="6"> </td>
+                  <td data-row="4" data-col="7"> </td>
+                  <td data-row="4" data-col="8"> </td>
+                  <td data-row="4" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1"></td>
+                  <td data-row="5" data-col="2">Papou</td>
+                  <td data-row="5" data-col="3">124</td>
+                  <td data-row="5" data-col="4">36.0</td>
+                  <td data-row="5" data-col="5"> </td>
+                  <td data-row="5" data-col="6"> </td>
+                  <td data-row="5" data-col="7"> </td>
+                  <td data-row="5" data-col="8"> </td>
+                  <td data-row="5" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1">sexe</td>
+                  <td data-row="6" data-col="2">Femelle</td>
+                  <td data-row="6" data-col="3">165</td>
+                  <td data-row="6" data-col="4">48.0</td>
+                  <td data-row="6" data-col="5"> </td>
+                  <td data-row="6" data-col="6"> </td>
+                  <td data-row="6" data-col="7"> </td>
+                  <td data-row="6" data-col="8"> </td>
+                  <td data-row="6" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1"></td>
+                  <td data-row="7" data-col="2">Mâle</td>
+                  <td data-row="7" data-col="3">168</td>
+                  <td data-row="7" data-col="4">48.8</td>
+                  <td data-row="7" data-col="5"> </td>
+                  <td data-row="7" data-col="6"> </td>
+                  <td data-row="7" data-col="7"> </td>
+                  <td data-row="7" data-col="8"> </td>
+                  <td data-row="7" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">Manquant</td>
+                  <td data-row="8" data-col="3">11</td>
+                  <td data-row="8" data-col="4">3.2</td>
+                  <td data-row="8" data-col="5"> </td>
+                  <td data-row="8" data-col="6"> </td>
+                  <td data-row="8" data-col="7"> </td>
+                  <td data-row="8" data-col="8"> </td>
+                  <td data-row="8" data-col="9"> </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Description des données.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Pour commencer, explorons cette question de façon visuelle.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(espece, masse, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># Retirer les lignes pour lesquelles une valeur est manquante</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> espece, <span class="at">y =</span> masse, <span class="at">fill =</span> sexe) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> F, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> sexe),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">1.3</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Masse (g)"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexe"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Masse des manchots, selon l’espèce et le sexe"</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>())</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-plot-penguins" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-plot-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lm_summary--_files/figure-html/fig-plot-penguins-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Masse des manchots en grammes, selon l’espèce et le sexe
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La masse semble effectivement dépendre du sexe, et varier selon l’espèce. J’ajuste donc la régression suivante, pour estimer cela de façon quantitative :</p>
+<p><span id="eq-un"><span class="math display">\[
+\text{masse}_i
+= \alpha
++ \beta_1\,X_{1i}
++ \beta_2\,X_{2i}
++ \beta_3\,X_{3i}
++ \varepsilon_i
+\tag{1}\]</span></span></p>
+<p>où <span class="math display">\[
+X_{1}=\mathbb{1}(\text{espèce}_i=\text{Jugulaire});\quad
+X_{2}=\mathbb{1}(\text{espèce}_i=\text{Papou});\quad
+X_{3}=\mathbb{1}(\text{sexe}_i=\text{Mâle}).
+\]</span></p>
+<p>La très classique fonction <code>summary()</code> renvoie une sortie tout aussi classique de ce modèle. Et tout aussi inélégante.</p>
+<div id="tbl-regression-moche" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-regression-moche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = masse ~ espece + sexe, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-816.87 -217.80  -16.87  227.61  882.20 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      3372.39      31.43 107.308   &lt;2e-16 ***
+especeJugulaire    26.92      46.48   0.579    0.563    
+especePapou      1377.86      39.10  35.236   &lt;2e-16 ***
+sexeMâle          667.56      34.70  19.236   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 316.6 on 329 degrees of freedom
+  (11 observations effacées parce que manquantes)
+Multiple R-squared:  0.8468,    Adjusted R-squared:  0.8454 
+F-statistic: 606.1 on 3 and 329 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-regression-moche-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Régression de la masse des manchots en grammes, sur l’espèce et le sexe, selon l’<a href="#eq-un" class="quarto-xref">Équation&nbsp;1</a>. Sortie base r.
+</figcaption>
+</figure>
+</div>
+<p>A partir d’ici, beaucoup de personnes copient les coefficients dans leur traitement de texte. Avec un ensemble de frictions :</p>
+<ul>
+<li>Si le modèle change, il faut re-copier les nouvelles estimations.</li>
+<li>Si l’on copie manuellement, des erreurs peuvent apparaître.</li>
+<li>L’intervalle de confiance n’est pas directement disponible lorsque l’on explore des données<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
+<li>On n’a pas de coefficient standardisé <span class="math inline">\(\beta\)</span>. Ici, ce n’est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie…</li>
+</ul>
+<p>Bref : on peut faire mieux<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. J’ai donc rédigé une petite fonction, e que s’apelerio <code>lm_summary()</code>, pour extraire les résultats d’un modèle <code>lm</code>. Cette fonction prend deux arguments : un modèle linéaire <code>lm</code> (duh!) et un argument <code>vcov</code> pour spécifier la matrice de variance-covariance à utiliser. Elle s’appuie sur le package <code>parameters</code> <span class="citation" data-cites="parameters">(<a href="#ref-parameters" role="doc-biblioref">Lüdecke et al., 2020</a>)</span> pour extraire les données du modèle linéaire, puis sur <code>dplyr</code> <span class="citation" data-cites="dplyr">(<a href="#ref-dplyr" role="doc-biblioref">Wickham et al., 2025</a>)</span> pour structurer la table.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(model, <span class="at">vcov =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres non standardisés</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> parameters<span class="sc">::</span><span class="fu">model_parameters</span>(model,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vcov =</span> vcov)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres standardisés (refit le modèle)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  mp_std <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    parameters<span class="sc">::</span><span class="fu">model_parameters</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardize =</span> <span class="st">"refit"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> vcov),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    Parameter,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_Coefficient =</span> Coefficient,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_low =</span> CI_low,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_high =</span> CI_high)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(mp, mp_std, <span class="at">by =</span> <span class="st">"Parameter"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Préparer les données</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(mp,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir p à trois décimales</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> .<span class="dv">001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">round</span>(p, <span class="dv">3</span>)),</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir les autres valeurs à deux décimales</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                      dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>)),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de l'estimate et le placer sous le Coefficient</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Coefficient =</span> <span class="fu">paste0</span>(Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, CI_low, <span class="st">"; "</span>, CI_high, <span class="st">"]"</span>),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de β et le placer sous β</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                      β <span class="ot">=</span> <span class="fu">paste0</span>(Std_Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, Std_CI_low, <span class="st">"; "</span>, Std_CI_high, <span class="st">"]"</span>),</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Conserver le modèle pour lm_tab, même après des verbes dplyr (mutate, filter, etc.)</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.model =</span> <span class="fu">list</span>(model))</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : les colonnes avec un nom simple</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(mp,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>                      Paramètre <span class="ot">=</span> Parameter,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Estimation =</span> Coefficient,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Erreur standard"</span> <span class="ot">=</span> SE,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> p)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : la colonne t est un peu plus complexe, car je souhaite y intégrer le nombre de degrés de liberté de la statistique</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(mp,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                           <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, broom<span class="sc">::</span><span class="fu">glance</span>(model)<span class="sc">$</span>df.residual, <span class="st">")"</span>),</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.cols =</span> t)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas garder les colonnes qui ont déjà été incorporées à d'autres, ou ne sont pas utiles</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(mp,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span><span class="fu">c</span>(CI, CI_low, CI_high, df_error, Std_Coefficient, Std_CI_low, Std_CI_high))</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  mp</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_summary</span>(lm_1) <span class="sc">%&gt;%</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.model)) <span class="sc">%&gt;%</span> <span class="co"># Une colonne ".model" stocke le modèle, pour pouvoir l'envoyer dans une future fonction. C'est inélégant, mais ça fonctionne.</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-regression-lm_summary" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-regression-lm_summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 26%">
+<col style="width: 14%">
+<col style="width: 17%">
+<col style="width: 6%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paramètre</th>
+<th style="text-align: left;">Estimation</th>
+<th style="text-align: right;">Erreur standard</th>
+<th style="text-align: right;">Statistique t (329)</th>
+<th style="text-align: left;">p</th>
+<th style="text-align: left;">β</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: left;">3372.39<br>[3310.56; 3434.21]</td>
+<td style="text-align: right;">31.43</td>
+<td style="text-align: right;">107.31</td>
+<td style="text-align: left;">&lt; .001</td>
+<td style="text-align: left;">-1.04<br>[-1.11; -0.96]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">especeJugulaire</td>
+<td style="text-align: left;">26.92<br>[-64.52; 118.37]</td>
+<td style="text-align: right;">46.48</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: left;">0.563</td>
+<td style="text-align: left;">0.03<br>[-0.08; 0.15]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">especePapou</td>
+<td style="text-align: left;">1377.86<br>[1300.93; 1454.78]</td>
+<td style="text-align: right;">39.10</td>
+<td style="text-align: right;">35.24</td>
+<td style="text-align: left;">&lt; .001</td>
+<td style="text-align: left;">1.71<br>[1.62; 1.81]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sexeMâle</td>
+<td style="text-align: left;">667.56<br>[599.29; 735.82]</td>
+<td style="text-align: right;">34.70</td>
+<td style="text-align: right;">19.24</td>
+<td style="text-align: left;">&lt; .001</td>
+<td style="text-align: left;">0.83<br>[0.74; 0.91]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-regression-lm_summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce et le sexe, selon l’<a href="#eq-un" class="quarto-xref">Équation&nbsp;1</a>. Sortie de la fonction <code>lm_summary()</code> passée via <code>knitr::kable()</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Ce dataframe est un bon début à mes yeux, même s’il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <code>lm_tab()</code>, s’appuie sur le package <code>gt</code> <span class="citation" data-cites="gt">(<a href="#ref-gt" role="doc-biblioref">Iannone et al., 2026</a>)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm_tab <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_summary) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">attr</span>(lm_summary, <span class="st">"model"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model) <span class="sc">&amp;&amp;</span> <span class="st">".model"</span> <span class="sc">%in%</span> <span class="fu">names</span>(lm_summary)) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> lm_summary<span class="sc">$</span>.model[[<span class="dv">1</span>]]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model)) {</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Aucun modèle retrouvé en sortie de lm_summary."</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">glance</span>(lm_model)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  t_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(lm_summary)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas afficher la colonne technique, qui contient le modèle</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_hide</span>(tab, <span class="at">columns =</span> dplyr<span class="sc">::</span><span class="fu">any_of</span>(<span class="st">".model"</span>))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_label</span>(</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimation =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span> <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!!</span><span class="at">t_col :=</span> gt<span class="sc">::</span><span class="fu">html</span>(</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")&lt;/strong&gt;"</span>)),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    β <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">fmt_markdown</span>(tab, <span class="at">columns =</span> <span class="fu">c</span>(Estimation, β))</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_align</span>(</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Estimation, <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span>, dplyr<span class="sc">::</span><span class="fu">all_of</span>(t_col), p, β))</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">tab_source_note</span>(</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">html</span>(<span class="fu">paste0</span>(<span class="st">"&lt;em&gt;Note&lt;/em&gt; : n = "</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                    scales<span class="sc">::</span><span class="fu">number</span>(g<span class="sc">$</span>nobs),</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" observations."</span>)))</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  tab</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_summary</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especeJugulaire"</span> <span class="sc">~</span> <span class="st">"Espèce : Jugulaire"</span>,</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especePapou"</span> <span class="sc">~</span> <span class="st">"Espèce : Papou"</span>,</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"sexeMâle"</span> <span class="sc">~</span> <span class="st">"Sexe : Mâle"</span>,</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> Paramètre)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_tab</span>()</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-regression-lm_tab" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-regression-lm_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div id="ctffasaltj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ctffasaltj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ctffasaltj thead, #ctffasaltj tbody, #ctffasaltj tfoot, #ctffasaltj tr, #ctffasaltj td, #ctffasaltj th {
+  border-style: none;
+}
+
+#ctffasaltj p {
+  margin: 0;
+  padding: 0;
+}
+
+#ctffasaltj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ctffasaltj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ctffasaltj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ctffasaltj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ctffasaltj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ctffasaltj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ctffasaltj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ctffasaltj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ctffasaltj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ctffasaltj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ctffasaltj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ctffasaltj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ctffasaltj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ctffasaltj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ctffasaltj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ctffasaltj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ctffasaltj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ctffasaltj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ctffasaltj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ctffasaltj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ctffasaltj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ctffasaltj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ctffasaltj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ctffasaltj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ctffasaltj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ctffasaltj .gt_left {
+  text-align: left;
+}
+
+#ctffasaltj .gt_center {
+  text-align: center;
+}
+
+#ctffasaltj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ctffasaltj .gt_font_normal {
+  font-weight: normal;
+}
+
+#ctffasaltj .gt_font_bold {
+  font-weight: bold;
+}
+
+#ctffasaltj .gt_font_italic {
+  font-style: italic;
+}
+
+#ctffasaltj .gt_super {
+  font-size: 65%;
+}
+
+#ctffasaltj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ctffasaltj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ctffasaltj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ctffasaltj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ctffasaltj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ctffasaltj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ctffasaltj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ctffasaltj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ctffasaltj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Paramètre" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Paramètre</strong></th>
+<th id="Estimation" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Estimation<br>
+[IC 95 %]</strong></th>
+<th id="Erreur-standard" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Erreur standard</strong></th>
+<th id="Statistique-t-(329)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Statistique <em>t</em> (329)</strong></th>
+<th id="p" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong><em>p</em>-valeur</strong></th>
+<th id="aβ" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong><em>β</em><br>
+[IC 95 %]</strong></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Paramètre">(Intercept)</td>
+<td class="gt_row gt_center" headers="Estimation">3372.39<br>[3310.56; 3434.21]</td>
+<td class="gt_row gt_center" headers="Erreur standard">31.43</td>
+<td class="gt_row gt_center" headers="Statistique t (329)">107.31</td>
+<td class="gt_row gt_center" headers="p">&lt; .001</td>
+<td class="gt_row gt_center" headers="β">-1.04<br>[-1.11; -0.96]</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Paramètre">Espèce : Jugulaire</td>
+<td class="gt_row gt_center" headers="Estimation">26.92<br>[-64.52; 118.37]</td>
+<td class="gt_row gt_center" headers="Erreur standard">46.48</td>
+<td class="gt_row gt_center" headers="Statistique t (329)">0.58</td>
+<td class="gt_row gt_center" headers="p">0.563</td>
+<td class="gt_row gt_center" headers="β">0.03<br>[-0.08; 0.15]</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Paramètre">Espèce : Papou</td>
+<td class="gt_row gt_center" headers="Estimation">1377.86<br>[1300.93; 1454.78]</td>
+<td class="gt_row gt_center" headers="Erreur standard">39.10</td>
+<td class="gt_row gt_center" headers="Statistique t (329)">35.24</td>
+<td class="gt_row gt_center" headers="p">&lt; .001</td>
+<td class="gt_row gt_center" headers="β">1.71<br>[1.62; 1.81]</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Paramètre">Sexe : Mâle</td>
+<td class="gt_row gt_center" headers="Estimation">667.56<br>[599.29; 735.82]</td>
+<td class="gt_row gt_center" headers="Erreur standard">34.70</td>
+<td class="gt_row gt_center" headers="Statistique t (329)">19.24</td>
+<td class="gt_row gt_center" headers="p">&lt; .001</td>
+<td class="gt_row gt_center" headers="β">0.83<br>[0.74; 0.91]</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd gt_sourcenotes">
+<td colspan="6" class="gt_sourcenote"><em>Note</em> : n = 333 observations.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-regression-lm_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Régression de la masse des manchots en grammes, sur l’espèce et le sexe, selon l’<a href="#eq-un" class="quarto-xref">Équation&nbsp;1</a>. Sortie de la fonction <code>lm_summary()</code> passée via <code>lm_tab()</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Ces fonctions ne me plaisent aujourd’hui qu’à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <code>lm_summary()</code> pour renommer les paramètres avant de l’envoyer à <code>lm_tab</code>. Si le dataframe est modifié en amont de l’ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner.</p>
+<p>Mais, à défaut, cela permet malgré tout d’obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <code>gt</code>, elle peut être exportée via la fonction <code>gtsave()</code> pour éviter de s’embêter à copier-coller manuellement les résultats.</p>
+</section>
+<section id="références" class="level1">
+
+
+
+<!-- -->
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Références</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-modelsummary" class="csl-entry" role="listitem">
+Arel-Bundock, V. (2022). modelsummary: Data and Model Summaries in R. <em>Journal of Statistical Software</em>, <em>103</em>(1), 1‑23. <a href="https://doi.org/10.18637/jss.v103.i01">https://doi.org/10.18637/jss.v103.i01</a>
+</div>
+<div id="ref-stargazer" class="csl-entry" role="listitem">
+Hlavac, M. (2022). <em>stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. Social Policy Institute. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>
+</div>
+<div id="ref-palmerpenguins" class="csl-entry" role="listitem">
+Horst, A. M., Hill, A. P., &amp; Gorman, K. B. (2020). <em>palmerpenguins: Palmer Archipelago (Antarctica) penguin data</em>. <a href="https://doi.org/10.5281/zenodo.3960218">https://doi.org/10.5281/zenodo.3960218</a>
+</div>
+<div id="ref-gt" class="csl-entry" role="listitem">
+Iannone, R., Cheng, J., Schloerke, B., Haughton, S., Hughes, E., Lauer, A., François, R., Seo, J., Brevoort, K., &amp; Roy, O. (2026). <em>gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>
+</div>
+<div id="ref-parameters" class="csl-entry" role="listitem">
+Lüdecke, D., Ben-Shachar, M. S., Patil, I., &amp; Makowski, D. (2020). Extracting, Computing and Exploring the Parameters of Statistical Models using <span>R</span>. <em>Journal of Open Source Software</em>, <em>5</em>(53), 2445. <a href="https://doi.org/10.21105/joss.02445">https://doi.org/10.21105/joss.02445</a>
+</div>
+<div id="ref-dplyr" class="csl-entry" role="listitem">
+Wickham, H., François, R., Henry, L., Müller, K., &amp; Vaughan, D. (2025). <em>dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notes de bas de page</h2>
+
+<ol>
+<li id="fn1"><p>Je vous jure. C’est pas extraordinaire ?!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Je vous encourage mille fois à chercher <em>Manchot Jugulaire</em> sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme <a href="https://www.asoc.org/learn/chinstrap-penguins/" target="_blank">celles-ci</a> ou <a href="https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html" target="_blank">celles-là</a>, qui sont fabuleuses.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Peut-être que vous arrivez à calculer 3372.39 + (1.96 x 31.43) de tête, personnellement, je ne sais pas faire.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Et d’excellents packages existent pour extraire de magnifiques tables de régression, dont l’excellent <code>modelsummary</code> <span class="citation" data-cites="modelsummary">(<a href="#ref-modelsummary" role="doc-biblioref">Arel-Bundock, 2022</a>)</span> ou plus anciennement stargazer qui n’est aujourd’hui plus mis à jour <span class="citation" data-cites="stargazer">(<a href="#ref-stargazer" role="doc-biblioref">Hlavac, 2022</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/charlymarie\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Transformer une sortie `R` (moche) en table de résultats (belle)"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 01-26-2026</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ["R", "Modèle linéaire", "Fonction"]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="an">tags:</span><span class="co"> ["Technique", "R"]</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Les utilisateurs et utilisatrices de `R` le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l'extraction de données et exporter une table de résultats pour un modèle de type `lm`."</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> fr</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="an">body-classes:</span><span class="co"> indent-paragraphs</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Voir le code"</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>&lt;hr style="border:1px solid blue" /&gt;</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="in">#### Construire un thème ggplot() personnalisé ####</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="in"># Quasi entièrement copié d'Andrew Heiss: https://www.andrewheiss.com/blog/2021/12/20/fully-bayesian-ate-iptw/</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="in"># Avec l'aide de Nicolas Rennie: https://nrennie.rbind.io/art-of-viz/programming-languages.html</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse); library(ggtext); library(modelsummary) </span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="in">egypt &lt;- MetBrewer::met.brewer("Egypt")</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="in">theme_nice &lt;- function() {</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal(base_family = "Times") +</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="in">    theme(</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="in">      panel.grid.minor = element_blank(),</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.background = element_rect(fill = "white", color = NA),</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.title = element_textbox_simple(lineheight = 0.5, face = "bold"),</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.subtitle = element_textbox_simple(lineheight = 0.5),</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.caption = element_textbox_simple(lineheight = 0.5),</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title = element_text(face = "bold"),</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.text = element_text(face = "bold", size = rel(0.8), hjust = 0),</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.background = element_rect(fill = "grey80", color = NA),</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.position = "bottom",</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.title=element_blank(),</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="in">      # Rien en X</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title.x=element_blank(),</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.text.x=element_blank(),</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.ticks.x=element_blank())</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in"># Faire de ce thème le thème par défaut</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_nice())</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point de départ</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>Toute personne qui a déjà utilisé <span class="in">`R`</span> est déjà arrivée à la conclusion assez simple que *les sorties en base `R` sont (très) moches et pas (du tout) pratiques*. Commençons par un exemple, pour lequel j'utilise le jeu de données <span class="in">`penguins`</span>, qui contient les observations réalisées sur 344 manchots en Antarctique^<span class="co">[</span><span class="ot">Je vous jure. C'est pas extraordinaire ?!</span><span class="co">] [@palmerpenguins]</span>.</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>Ce jeu contient une information par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l'année de ces mesures. </span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>Partons d'une question simple : qu'est-ce qui détermine la masse d'un manchot ? Assez naïvement, je penserais à l'espèce et au sexe du manchot. Nous avons la masse d'un manchot en gramme, le sexe du manchot (mâle ou femelle) et l'espèce du manchot (adélie, jugulaire ou papou^<span class="co">[</span><span class="ot">Je vous encourage mille fois à chercher *Manchot Jugulaire* sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme [celles-ci](https://www.asoc.org/learn/chinstrap-penguins/){target="_blank"} ou [celles-là](https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html){target="_blank"}, qui sont fabuleuses.</span><span class="co">]</span>).</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-descriptive</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Description des données."</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="do">#### Charger les packages ####</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt);</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">~</span> <span class="st">"Adélie"</span>,</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Chinstrap"</span> <span class="sc">~</span> <span class="st">"Jugulaire"</span>,</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Gentoo"</span> <span class="sc">~</span> <span class="st">"Papou"</span>),</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"Femelle"</span>,</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"Mâle"</span>)) <span class="sc">%&gt;%</span> <span class="co"># Traduire les données</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">masse =</span> body_mass_g,</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">espece =</span> species,</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexe =</span> sex) <span class="co"># Renommer les colonnes</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(masse, espece, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.x)),</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.x), <span class="st">"Manquant"</span>, .x))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datasummary_skim</span>()</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>Pour commencer, explorons cette question de façon visuelle.</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-penguins</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Masse des manchots en grammes, selon l’espèce et le sexe"</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(espece, masse, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># Retirer les lignes pour lesquelles une valeur est manquante</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> espece, <span class="at">y =</span> masse, <span class="at">fill =</span> sexe) <span class="sc">+</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> F, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> sexe),</span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">1.3</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Masse (g)"</span>,</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexe"</span>,</span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Masse des manchots, selon l’espèce et le sexe"</span>) <span class="sc">+</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>())</span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>La masse semble effectivement dépendre du sexe, et varier selon l'espèce. J'ajuste donc la régression suivante, pour estimer cela de façon quantitative : </span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>\text{masse}_i</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>= \alpha</span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_1\,X_{1i}</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_2\,X_{2i}</span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_3\,X_{3i}</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\varepsilon_i</span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>$$ {#eq-un}</span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>où</span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>X_{1}=\mathbb{1}(\text{espèce}_i=\text{Jugulaire});\quad</span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>X_{2}=\mathbb{1}(\text{espèce}_i=\text{Papou});\quad</span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>X_{3}=\mathbb{1}(\text{sexe}_i=\text{Mâle}).</span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>La très classique fonction <span class="in">`summary()`</span> renvoie une sortie tout aussi classique de ce modèle. Et tout aussi inélégante. </span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, output=axis, echo=FALSE}</span></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-regression-moche</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie base r."</span></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a><span class="in">lm_1 &lt;- lm(masse ~ espece + sexe, df)</span></span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="in">summary(lm_1)</span></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>A partir d'ici, beaucoup de personnes copient les coefficients dans leur traitement de texte. Avec un ensemble de frictions : </span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si le modèle change, il faut re-copier les nouvelles estimations. </span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si l'on copie manuellement, des erreurs peuvent apparaître. </span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>L'intervalle de confiance n'est pas directement disponible lorsque l'on explore des données^<span class="co">[</span><span class="ot">Peut-être que vous arrivez à calculer `r round(lm_1$coefficients[1], 2)` + (1.96 x `r round(summary(lm_1)$coefficients[1, 2], 2)`) de tête, personnellement, je ne sais pas faire.</span><span class="co">]</span>. </span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>On n'a pas de coefficient standardisé $\beta$. Ici, ce n'est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie... </span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>Bref : on peut faire mieux^<span class="co">[</span><span class="ot">Et d'excellents packages existent pour extraire de magnifiques tables de régression, dont l'excellent `modelsummary` [@modelsummary] ou plus anciennement stargazer qui n'est aujourd'hui plus mis à jour [@stargazer].</span><span class="co">]</span>. J'ai donc rédigé une petite fonction, e que s'apelerio <span class="in">`lm_summary()`</span>, pour extraire les résultats d'un modèle <span class="in">`lm`</span>. Cette fonction prend deux arguments : un modèle linéaire <span class="in">`lm`</span> (duh!) et un argument <span class="in">`vcov`</span> pour spécifier la matrice de variance-covariance à utiliser. Elle s'appuie sur le package <span class="in">`parameters`</span> <span class="co">[</span><span class="ot">@parameters</span><span class="co">]</span> pour extraire les données du modèle linéaire, puis sur <span class="in">`dplyr`</span> <span class="co">[</span><span class="ot">@dplyr</span><span class="co">]</span> pour structurer la table.</span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_summary</span></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `knitr::kable()`."</span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>lm_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(model, <span class="at">vcov =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres non standardisés</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> parameters<span class="sc">::</span><span class="fu">model_parameters</span>(model,</span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vcov =</span> vcov)</span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres standardisés (refit le modèle)</span></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>  mp_std <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>    parameters<span class="sc">::</span><span class="fu">model_parameters</span>(</span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardize =</span> <span class="st">"refit"</span>,</span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> vcov),</span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>    Parameter,</span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_Coefficient =</span> Coefficient,</span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_low =</span> CI_low,</span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_high =</span> CI_high)</span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(mp, mp_std, <span class="at">by =</span> <span class="st">"Parameter"</span>)</span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Préparer les données</span></span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(mp,</span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir p à trois décimales</span></span>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> .<span class="dv">001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">round</span>(p, <span class="dv">3</span>)),</span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir les autres valeurs à deux décimales</span></span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>                      dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>)),</span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de l'estimate et le placer sous le Coefficient</span></span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Coefficient =</span> <span class="fu">paste0</span>(Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, CI_low, <span class="st">"; "</span>, CI_high, <span class="st">"]"</span>),</span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de β et le placer sous β</span></span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a>                      β <span class="ot">=</span> <span class="fu">paste0</span>(Std_Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, Std_CI_low, <span class="st">"; "</span>, Std_CI_high, <span class="st">"]"</span>),</span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Conserver le modèle pour lm_tab, même après des verbes dplyr (mutate, filter, etc.)</span></span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.model =</span> <span class="fu">list</span>(model))</span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : les colonnes avec un nom simple</span></span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(mp,</span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>                      Paramètre <span class="ot">=</span> Parameter,</span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Estimation =</span> Coefficient,</span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Erreur standard"</span> <span class="ot">=</span> SE,</span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> p)</span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : la colonne t est un peu plus complexe, car je souhaite y intégrer le nombre de degrés de liberté de la statistique</span></span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(mp,</span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>                           <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, broom<span class="sc">::</span><span class="fu">glance</span>(model)<span class="sc">$</span>df.residual, <span class="st">")"</span>),</span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.cols =</span> t)</span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas garder les colonnes qui ont déjà été incorporées à d'autres, ou ne sont pas utiles</span></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(mp,</span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span><span class="fu">c</span>(CI, CI_low, CI_high, df_error, Std_Coefficient, Std_CI_low, Std_CI_high))</span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>  mp</span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_summary</span>(lm_1) <span class="sc">%&gt;%</span></span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.model)) <span class="sc">%&gt;%</span> <span class="co"># Une colonne ".model" stocke le modèle, pour pouvoir l'envoyer dans une future fonction. C'est inélégant, mais ça fonctionne.</span></span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>Ce dataframe est un bon début à mes yeux, même s'il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <span class="in">`lm_tab()`</span>, s'appuie sur le package <span class="in">`gt`</span> <span class="co">[</span><span class="ot">@gt</span><span class="co">]</span>.</span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_tab</span></span>
+<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `lm_tab()`."</span></span>
+<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>lm_tab <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_summary) {</span>
+<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">attr</span>(lm_summary, <span class="st">"model"</span>)</span>
+<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model) <span class="sc">&amp;&amp;</span> <span class="st">".model"</span> <span class="sc">%in%</span> <span class="fu">names</span>(lm_summary)) {</span>
+<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> lm_summary<span class="sc">$</span>.model[[<span class="dv">1</span>]]</span>
+<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model)) {</span>
+<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Aucun modèle retrouvé en sortie de lm_summary."</span>)</span>
+<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">glance</span>(lm_model)</span>
+<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a>  t_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")"</span>)</span>
+<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(lm_summary)</span>
+<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas afficher la colonne technique, qui contient le modèle</span></span>
+<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_hide</span>(tab, <span class="at">columns =</span> dplyr<span class="sc">::</span><span class="fu">any_of</span>(<span class="st">".model"</span>))</span>
+<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_label</span>(</span>
+<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>),</span>
+<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimation =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>),</span>
+<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span> <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>),</span>
+<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!!</span><span class="at">t_col :=</span> gt<span class="sc">::</span><span class="fu">html</span>(</span>
+<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")&lt;/strong&gt;"</span>)),</span>
+<span id="cb6-265"><a href="#cb6-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>),</span>
+<span id="cb6-266"><a href="#cb6-266" aria-hidden="true" tabindex="-1"></a>    β <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>))</span>
+<span id="cb6-267"><a href="#cb6-267" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-268"><a href="#cb6-268" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">fmt_markdown</span>(tab, <span class="at">columns =</span> <span class="fu">c</span>(Estimation, β))</span>
+<span id="cb6-269"><a href="#cb6-269" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-270"><a href="#cb6-270" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_align</span>(</span>
+<span id="cb6-271"><a href="#cb6-271" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb6-272"><a href="#cb6-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb6-273"><a href="#cb6-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Estimation, <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span>, dplyr<span class="sc">::</span><span class="fu">all_of</span>(t_col), p, β))</span>
+<span id="cb6-274"><a href="#cb6-274" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-275"><a href="#cb6-275" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">tab_source_note</span>(</span>
+<span id="cb6-276"><a href="#cb6-276" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb6-277"><a href="#cb6-277" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">html</span>(<span class="fu">paste0</span>(<span class="st">"&lt;em&gt;Note&lt;/em&gt; : n = "</span>,</span>
+<span id="cb6-278"><a href="#cb6-278" aria-hidden="true" tabindex="-1"></a>                    scales<span class="sc">::</span><span class="fu">number</span>(g<span class="sc">$</span>nobs),</span>
+<span id="cb6-279"><a href="#cb6-279" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" observations."</span>)))</span>
+<span id="cb6-280"><a href="#cb6-280" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-281"><a href="#cb6-281" aria-hidden="true" tabindex="-1"></a>  tab</span>
+<span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
+<span id="cb6-285"><a href="#cb6-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_summary</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-286"><a href="#cb6-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-287"><a href="#cb6-287" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especeJugulaire"</span> <span class="sc">~</span> <span class="st">"Espèce : Jugulaire"</span>,</span>
+<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especePapou"</span> <span class="sc">~</span> <span class="st">"Espèce : Papou"</span>,</span>
+<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"sexeMâle"</span> <span class="sc">~</span> <span class="st">"Sexe : Mâle"</span>,</span>
+<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> Paramètre)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_tab</span>()</span>
+<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>Ces fonctions ne me plaisent aujourd'hui qu'à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <span class="in">`lm_summary()`</span> pour renommer les paramètres avant de l'envoyer à <span class="in">`lm_tab`</span>. Si le dataframe est modifié en amont de l'ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner. </span>
+<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>Mais, à défaut, cela permet malgré tout d'obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <span class="in">`gt`</span>, elle peut être exportée via la fonction <span class="in">`gtsave()`</span> pour éviter de s'embêter à copier-coller manuellement les résultats.</span>
+<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a><span class="fu"># Références</span></span>
+</code><button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

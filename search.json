@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Penser la stigmatisation comme un système : le cadre proposé par Fox et al. (2018)\n\n\n\n\n\n\nVulgarisation\n\n\nStigmatisation\n\n\n\nCe billet présente le cadre théorique proposé par Fox et al. (2018) pour penser la stigmatisation comme un système articulant différents niveaux sociaux, acteurs et perspectives.\n\n\n\n\n\n19 janv. 2026\n\n\nStigmatisation,Vulgarisation\n\n\n\n\n\n\n\nPourquoi ce blog\n\n\n\n\n\n\nVulgarisation\n\n\n\nCe billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.\n\n\n\n\n\n5 janv. 2026\n\n\nVulgarisation,Politiques publiques,Recherche académique\n\n\n\n\n\n\nAucun article correspondant"
+    "text": "Transformer une sortie R (moche) en table de résultats (belle)\n\n\n\n\n\n\nR\n\n\nModèle linéaire\n\n\nFonction\n\n\n\nLes utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm.\n\n\n\n\n\n26 janv. 2026\n\n\nTechnique,R\n\n\n\n\n\n\n\nPenser la stigmatisation comme un système : le cadre proposé par Fox et al. (2018)\n\n\n\n\n\n\nVulgarisation\n\n\nStigmatisation\n\n\n\nCe billet présente le cadre théorique proposé par Fox et al. (2018) pour penser la stigmatisation comme un système articulant différents niveaux sociaux, acteurs et perspectives.\n\n\n\n\n\n19 janv. 2026\n\n\nStigmatisation,Vulgarisation\n\n\n\n\n\n\n\nPourquoi ce blog\n\n\n\n\n\n\nVulgarisation\n\n\n\nCe billet explique la démarche de ce blog : rendre accessibles les travaux que je mène avec des co auteurs et autrices, pour en simplifier le partage.\n\n\n\n\n\n5 janv. 2026\n\n\nVulgarisation,Politiques publiques,Recherche académique\n\n\n\n\n\n\nAucun article correspondant"
   },
   {
     "objectID": "teaching.html#experimental-methodology",
@@ -107,8 +107,15 @@
   {
     "objectID": "posts/Technique - lm_summary()/draft.html#footnotes",
     "href": "posts/Technique - lm_summary()/draft.html#footnotes",
-    "title": "Transformer une sortie r (moche) en table de résultats (belle)",
+    "title": "Transformer une sortie R (moche) en table de résultats (belle)",
     "section": "Notes de bas de page",
-    "text": "Notes de bas de page\n\n\nJe vous jure. C’est pas extraordinaire !?↩︎\nPeut-être que vous arrivez à calculer 3372.39 + (1.96 x 31.43) de tête, personnellement, je ne sais pas faire.↩︎"
+    "text": "Notes de bas de page\n\n\nJe vous jure. C’est pas extraordinaire ?!↩︎\nJe vous encourage mille fois à chercher Manchot Jugulaire sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme celles-ci ou celles-là, qui sont fabuleuses.↩︎\nPeut-être que vous arrivez à calculer 3372.39 + (1.96 x 31.43) de tête, personnellement, je ne sais pas faire.↩︎\nEt d’excellents packages existent pour extraire de magnifiques tables de régression, dont l’excellent modelsummary (Arel-Bundock, 2022) ou plus anciennement stargazer qui n’est aujourd’hui plus mis à jour (Hlavac, 2022).↩︎"
+  },
+  {
+    "objectID": "posts/03 - lm_summary()/lm_summary().html#footnotes",
+    "href": "posts/03 - lm_summary()/lm_summary().html#footnotes",
+    "title": "Transformer une sortie R (moche) en table de résultats (belle)",
+    "section": "Notes de bas de page",
+    "text": "Notes de bas de page\n\n\nJe vous jure. C’est pas extraordinaire ?!↩︎\nJe vous encourage mille fois à chercher Manchot Jugulaire sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme celles-ci ou celles-là, qui sont fabuleuses.↩︎\nPeut-être que vous arrivez à calculer 3372.39 + (1.96 x 31.43) de tête, personnellement, je ne sais pas faire.↩︎\nEt d’excellents packages existent pour extraire de magnifiques tables de régression, dont l’excellent modelsummary (Arel-Bundock, 2022) ou plus anciennement stargazer qui n’est aujourd’hui plus mis à jour (Hlavac, 2022).↩︎"
   }
 ]

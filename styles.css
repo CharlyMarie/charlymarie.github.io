@@ -180,3 +180,4 @@ body.indent-paragraphs main p { text-indent: 1.25em; }
 body.indent-paragraphs main .cell-output p,
 body.indent-paragraphs main .cell-output-display p,
 body.indent-paragraphs main .cell p { text-indent: 0; }
+body.indent-paragraphs main section.footnotes p { text-indent: 0; }
