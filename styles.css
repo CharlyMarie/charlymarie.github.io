@@ -181,3 +181,16 @@ body.indent-paragraphs main .cell-output p,
 body.indent-paragraphs main .cell-output-display p,
 body.indent-paragraphs main .cell p { text-indent: 0; }
 body.indent-paragraphs main section.footnotes p { text-indent: 0; }
+body.indent-paragraphs .footnotes p,
+body.indent-paragraphs div.footnotes p,
+body.indent-paragraphs section.footnotes p {  text-indent: 0 !important; }
+body.indent-paragraphs .footnotes ol,
+body.indent-paragraphs .footnotes ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+/* Prévisualisation des notes (tooltip Quarto) : pas d'indentation */
+body.indent-paragraphs .tippy-content p,
+body.indent-paragraphs .tippy-content li p {
+  text-indent: 0 !important;
+}

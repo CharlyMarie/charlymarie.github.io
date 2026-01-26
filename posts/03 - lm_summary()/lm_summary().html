@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm.">
+<meta name="description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm().">
 
 <title>Charly Marie – Transformer une sortie R (moche) en table de résultats (belle)</title>
 <style>
@@ -160,7 +160,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Charly Marie - Transformer une sortie R (moche) en table de résultats (belle)">
-<meta property="og:description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm.">
+<meta property="og:description" content="Les utilisateurs et utilisatrices de R le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type lm().">
 <meta property="og:image" content="https://charlymarie.github.io/posts/03 - lm_summary()/data:image/png;base64, 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">
 <meta property="og:site_name" content="Charly Marie">
 </head>
@@ -245,7 +245,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Les utilisateurs et utilisatrices de <code>R</code> le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type <code>lm</code>.
+    Les utilisateurs et utilisatrices de <code>R</code> le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l’extraction de données et exporter une table de résultats pour un modèle de type <code>lm()</code>.
   </div>
 </div>
 
@@ -272,7 +272,7 @@ window.Quarto = {
 <section id="point-de-départ" class="level1">
 <h1>Point de départ</h1>
 <p>Toute personne qui a déjà utilisé <code>R</code> est déjà arrivée à la conclusion assez simple que <em>les sorties en base <code>R</code> sont (très) moches et pas (du tout) pratiques</em>. Commençons par un exemple, pour lequel j’utilise le jeu de données <code>penguins</code>, qui contient les observations réalisées sur 344 manchots en Antarctique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation" data-cites="palmerpenguins">(<a href="#ref-palmerpenguins" role="doc-biblioref">Horst et al., 2020</a>)</span>.</p>
-<p>Ce jeu contient une information par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l’année de ces mesures.</p>
+<p>Ce jeu contient une observation par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l’année d’observation.</p>
 <p>Partons d’une question simple : qu’est-ce qui détermine la masse d’un manchot ? Assez naïvement, je penserais à l’espèce et au sexe du manchot. Nous avons la masse d’un manchot en gramme, le sexe du manchot (mâle ou femelle) et l’espèce du manchot (adélie, jugulaire ou papou<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>).</p>
 <div class="cell">
 <details class="code-fold">
@@ -314,20 +314,20 @@ window.Quarto = {
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_vlm160hv5va8wtcxq0ex = TinyTable.createTableFunctions("tinytable_vlm160hv5va8wtcxq0ex");
+      const tableFns_nz7my3798g7h5ks1olci = TinyTable.createTableFunctions("tinytable_nz7my3798g7h5ks1olci");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '8', j: 1 }, { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 }, { i: '8', j: 5 }, { i: '8', j: 6 }, { i: '8', j: 7 }, { i: '8', j: 8 }, { i: '8', j: 9 } ], css_id: 'tinytable_css_c3811spw25r609chpss0',}, 
-          { positions: [ { i: '2', j: 1 }, { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 }, { i: '2', j: 6 }, { i: '2', j: 7 }, { i: '2', j: 8 }, { i: '2', j: 9 } ], css_id: 'tinytable_css_8iuaxlfvw9fap44d0dkl',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_alv7blbtodqitjby5li9',}, 
+          { positions: [ { i: '8', j: 1 }, { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 }, { i: '8', j: 5 }, { i: '8', j: 6 }, { i: '8', j: 7 }, { i: '8', j: 8 }, { i: '8', j: 9 } ], css_id: 'tinytable_css_r10p0qyk42wfw4kyql4q',}, 
+          { positions: [ { i: '2', j: 1 }, { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 }, { i: '2', j: 6 }, { i: '2', j: 7 }, { i: '2', j: 8 }, { i: '2', j: 9 } ], css_id: 'tinytable_css_t5u08vwlz5xyyve263sb',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_wz1d9dkq9vhpb9gbr3o6',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_vlm160hv5va8wtcxq0ex.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_nz7my3798g7h5ks1olci.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -336,12 +336,12 @@ window.Quarto = {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_c3811spw25r609chpss0, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_c3811spw25r609chpss0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_8iuaxlfvw9fap44d0dkl, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_8iuaxlfvw9fap44d0dkl {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_vlm160hv5va8wtcxq0ex td.tinytable_css_alv7blbtodqitjby5li9, #tinytable_vlm160hv5va8wtcxq0ex th.tinytable_css_alv7blbtodqitjby5li9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_r10p0qyk42wfw4kyql4q, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_r10p0qyk42wfw4kyql4q {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_t5u08vwlz5xyyve263sb, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_t5u08vwlz5xyyve263sb {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_wz1d9dkq9vhpb9gbr3o6, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_wz1d9dkq9vhpb9gbr3o6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_vlm160hv5va8wtcxq0ex" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_nz7my3798g7h5ks1olci" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -545,7 +545,7 @@ Table&nbsp;2: Régression de la masse des manchots en grammes, sur l’espèce e
 <li>Si le modèle change, il faut re-copier les nouvelles estimations.</li>
 <li>Si l’on copie manuellement, des erreurs peuvent apparaître.</li>
 <li>L’intervalle de confiance n’est pas directement disponible lorsque l’on explore des données<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
-<li>On n’a pas de coefficient standardisé <span class="math inline">\(\beta\)</span>. Ici, ce n’est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie…</li>
+<li>Il n’est pas possible d’obtenir un coefficient standardisé type <span class="math inline">\(\beta\)</span> sans ré-ajuster le modèle. Ici, ce n’est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie…</li>
 </ul>
 <p>Bref : on peut faire mieux<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. J’ai donc rédigé une petite fonction, e que s’apelerio <code>lm_summary()</code>, pour extraire les résultats d’un modèle <code>lm</code>. Cette fonction prend deux arguments : un modèle linéaire <code>lm</code> (duh!) et un argument <code>vcov</code> pour spécifier la matrice de variance-covariance à utiliser. Elle s’appuie sur le package <code>parameters</code> <span class="citation" data-cites="parameters">(<a href="#ref-parameters" role="doc-biblioref">Lüdecke et al., 2020</a>)</span> pour extraire les données du modèle linéaire, puis sur <code>dplyr</code> <span class="citation" data-cites="dplyr">(<a href="#ref-dplyr" role="doc-biblioref">Wickham et al., 2025</a>)</span> pour structurer la table.</p>
 <div class="cell">
@@ -678,7 +678,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
 </figure>
 </div>
 </div>
-<p>Ce dataframe est un bon début à mes yeux, même s’il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <code>lm_tab()</code>, s’appuie sur le package <code>gt</code> <span class="citation" data-cites="gt">(<a href="#ref-gt" role="doc-biblioref">Iannone et al., 2026</a>)</span>.</p>
+<p>Ce dataframe est un bon début à mes yeux, même s’il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <code>lm_tab()</code>, s’appuie principalement sur le package <code>gt</code> <span class="citation" data-cites="gt">(<a href="#ref-gt" role="doc-biblioref">Iannone et al., 2026</a>)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Voir le code</summary>
@@ -741,23 +741,23 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
 <div aria-describedby="tbl-regression-lm_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="ctffasaltj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ctffasaltj table {
+<div id="bmfskpsqxg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bmfskpsqxg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ctffasaltj thead, #ctffasaltj tbody, #ctffasaltj tfoot, #ctffasaltj tr, #ctffasaltj td, #ctffasaltj th {
+#bmfskpsqxg thead, #bmfskpsqxg tbody, #bmfskpsqxg tfoot, #bmfskpsqxg tr, #bmfskpsqxg td, #bmfskpsqxg th {
   border-style: none;
 }
 
-#ctffasaltj p {
+#bmfskpsqxg p {
   margin: 0;
   padding: 0;
 }
 
-#ctffasaltj .gt_table {
+#bmfskpsqxg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -783,12 +783,12 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-left-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_caption {
+#bmfskpsqxg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ctffasaltj .gt_title {
+#bmfskpsqxg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -800,7 +800,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-width: 0;
 }
 
-#ctffasaltj .gt_subtitle {
+#bmfskpsqxg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -812,7 +812,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-top-width: 0;
 }
 
-#ctffasaltj .gt_heading {
+#bmfskpsqxg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -824,13 +824,13 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_bottom_border {
+#bmfskpsqxg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_col_headings {
+#bmfskpsqxg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -845,7 +845,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_col_heading {
+#bmfskpsqxg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -865,7 +865,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   overflow-x: hidden;
 }
 
-#ctffasaltj .gt_column_spanner_outer {
+#bmfskpsqxg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -877,15 +877,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 4px;
 }
 
-#ctffasaltj .gt_column_spanner_outer:first-child {
+#bmfskpsqxg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ctffasaltj .gt_column_spanner_outer:last-child {
+#bmfskpsqxg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ctffasaltj .gt_column_spanner {
+#bmfskpsqxg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -897,11 +897,11 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   width: 100%;
 }
 
-#ctffasaltj .gt_spanner_row {
+#bmfskpsqxg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ctffasaltj .gt_group_heading {
+#bmfskpsqxg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -927,7 +927,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   text-align: left;
 }
 
-#ctffasaltj .gt_empty_group_heading {
+#bmfskpsqxg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -942,15 +942,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   vertical-align: middle;
 }
 
-#ctffasaltj .gt_from_md > :first-child {
+#bmfskpsqxg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ctffasaltj .gt_from_md > :last-child {
+#bmfskpsqxg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ctffasaltj .gt_row {
+#bmfskpsqxg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,7 +969,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   overflow-x: hidden;
 }
 
-#ctffasaltj .gt_stub {
+#bmfskpsqxg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -982,7 +982,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#ctffasaltj .gt_stub_row_group {
+#bmfskpsqxg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -996,15 +996,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   vertical-align: top;
 }
 
-#ctffasaltj .gt_row_group_first td {
+#bmfskpsqxg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ctffasaltj .gt_row_group_first th {
+#bmfskpsqxg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ctffasaltj .gt_summary_row {
+#bmfskpsqxg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1014,16 +1014,16 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#ctffasaltj .gt_first_summary_row {
+#bmfskpsqxg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_first_summary_row.thick {
+#bmfskpsqxg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ctffasaltj .gt_last_summary_row {
+#bmfskpsqxg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1033,7 +1033,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_grand_summary_row {
+#bmfskpsqxg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1043,7 +1043,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#ctffasaltj .gt_first_grand_summary_row {
+#bmfskpsqxg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1053,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-top-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_last_grand_summary_row_top {
+#bmfskpsqxg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1063,11 +1063,11 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_striped {
+#bmfskpsqxg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ctffasaltj .gt_table_body {
+#bmfskpsqxg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1076,7 +1076,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_footnotes {
+#bmfskpsqxg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1090,7 +1090,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_footnote {
+#bmfskpsqxg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1099,7 +1099,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#ctffasaltj .gt_sourcenotes {
+#bmfskpsqxg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1113,7 +1113,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#ctffasaltj .gt_sourcenote {
+#bmfskpsqxg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1121,72 +1121,72 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#ctffasaltj .gt_left {
+#bmfskpsqxg .gt_left {
   text-align: left;
 }
 
-#ctffasaltj .gt_center {
+#bmfskpsqxg .gt_center {
   text-align: center;
 }
 
-#ctffasaltj .gt_right {
+#bmfskpsqxg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ctffasaltj .gt_font_normal {
+#bmfskpsqxg .gt_font_normal {
   font-weight: normal;
 }
 
-#ctffasaltj .gt_font_bold {
+#bmfskpsqxg .gt_font_bold {
   font-weight: bold;
 }
 
-#ctffasaltj .gt_font_italic {
+#bmfskpsqxg .gt_font_italic {
   font-style: italic;
 }
 
-#ctffasaltj .gt_super {
+#bmfskpsqxg .gt_super {
   font-size: 65%;
 }
 
-#ctffasaltj .gt_footnote_marks {
+#bmfskpsqxg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ctffasaltj .gt_asterisk {
+#bmfskpsqxg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ctffasaltj .gt_indent_1 {
+#bmfskpsqxg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ctffasaltj .gt_indent_2 {
+#bmfskpsqxg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ctffasaltj .gt_indent_3 {
+#bmfskpsqxg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ctffasaltj .gt_indent_4 {
+#bmfskpsqxg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ctffasaltj .gt_indent_5 {
+#bmfskpsqxg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ctffasaltj .katex-display {
+#bmfskpsqxg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ctffasaltj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bmfskpsqxg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1263,7 +1263,7 @@ Table&nbsp;4: Régression de la masse des manchots en grammes, sur l’espèce e
 </figure>
 </div>
 </div>
-<p>Ces fonctions ne me plaisent aujourd’hui qu’à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <code>lm_summary()</code> pour renommer les paramètres avant de l’envoyer à <code>lm_tab</code>. Si le dataframe est modifié en amont de l’ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner.</p>
+<p>Ces fonctions ne me plaisent aujourd’hui qu’à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <code>lm_summary()</code> pour renommer les paramètres avant de l’envoyer à <code>lm_tab()</code>. Si le dataframe est modifié en amont de l’ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner.</p>
 <p>Mais, à défaut, cela permet malgré tout d’obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <code>gt</code>, elle peut être exportée via la fonction <code>gtsave()</code> pour éviter de s’embêter à copier-coller manuellement les résultats.</p>
 </section>
 <section id="références" class="level1">
@@ -1301,7 +1301,7 @@ Wickham, H., François, R., Henry, L., Müller, K., &amp; Vaughan, D. (2025). <e
 <li id="fn1"><p>Je vous jure. C’est pas extraordinaire ?!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Je vous encourage mille fois à chercher <em>Manchot Jugulaire</em> sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme <a href="https://www.asoc.org/learn/chinstrap-penguins/" target="_blank">celles-ci</a> ou <a href="https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html" target="_blank">celles-là</a>, qui sont fabuleuses.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Peut-être que vous arrivez à calculer 3372.39 + (1.96 x 31.43) de tête, personnellement, je ne sais pas faire.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Et d’excellents packages existent pour extraire de magnifiques tables de régression, dont l’excellent <code>modelsummary</code> <span class="citation" data-cites="modelsummary">(<a href="#ref-modelsummary" role="doc-biblioref">Arel-Bundock, 2022</a>)</span> ou plus anciennement stargazer qui n’est aujourd’hui plus mis à jour <span class="citation" data-cites="stargazer">(<a href="#ref-stargazer" role="doc-biblioref">Hlavac, 2022</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Et d’excellents packages existent pour extraire de magnifiques tables de régression, dont l’excellent <code>modelsummary</code> <span class="citation" data-cites="modelsummary">(<a href="#ref-modelsummary" role="doc-biblioref">Arel-Bundock, 2022</a>)</span> ou plus anciennement <code>stargazer</code> qui n’est aujourd’hui plus mis à jour <span class="citation" data-cites="stargazer">(<a href="#ref-stargazer" role="doc-biblioref">Hlavac, 2022</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1780,7 +1780,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 01-26-2026</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ["R", "Modèle linéaire", "Fonction"]</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="an">tags:</span><span class="co"> ["Technique", "R"]</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Les utilisateurs et utilisatrices de `R` le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l'extraction de données et exporter une table de résultats pour un modèle de type `lm`."</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Les utilisateurs et utilisatrices de `R` le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l'extraction de données et exporter une table de résultats pour un modèle de type `lm()`."</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> fr</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="an">body-classes:</span><span class="co"> indent-paragraphs</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
@@ -1833,7 +1833,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point de départ</span></span>
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>Toute personne qui a déjà utilisé <span class="in">`R`</span> est déjà arrivée à la conclusion assez simple que *les sorties en base `R` sont (très) moches et pas (du tout) pratiques*. Commençons par un exemple, pour lequel j'utilise le jeu de données <span class="in">`penguins`</span>, qui contient les observations réalisées sur 344 manchots en Antarctique^<span class="co">[</span><span class="ot">Je vous jure. C'est pas extraordinaire ?!</span><span class="co">] [@palmerpenguins]</span>.</span>
 <span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>Ce jeu contient une information par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l'année de ces mesures. </span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>Ce jeu contient une observation par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l'année d'observation. </span>
 <span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>Partons d'une question simple : qu'est-ce qui détermine la masse d'un manchot ? Assez naïvement, je penserais à l'espèce et au sexe du manchot. Nous avons la masse d'un manchot en gramme, le sexe du manchot (mâle ou femelle) et l'espèce du manchot (adélie, jugulaire ou papou^<span class="co">[</span><span class="ot">Je vous encourage mille fois à chercher *Manchot Jugulaire* sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme [celles-ci](https://www.asoc.org/learn/chinstrap-penguins/){target="_blank"} ou [celles-là](https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html){target="_blank"}, qui sont fabuleuses.</span><span class="co">]</span>).</span>
 <span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
@@ -1930,9 +1930,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si le modèle change, il faut re-copier les nouvelles estimations. </span>
 <span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si l'on copie manuellement, des erreurs peuvent apparaître. </span>
 <span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>L'intervalle de confiance n'est pas directement disponible lorsque l'on explore des données^<span class="co">[</span><span class="ot">Peut-être que vous arrivez à calculer `r round(lm_1$coefficients[1], 2)` + (1.96 x `r round(summary(lm_1)$coefficients[1, 2], 2)`) de tête, personnellement, je ne sais pas faire.</span><span class="co">]</span>. </span>
-<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>On n'a pas de coefficient standardisé $\beta$. Ici, ce n'est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie... </span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il n'est pas possible d'obtenir un coefficient standardisé type $\beta$ sans ré-ajuster le modèle. Ici, ce n'est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie... </span>
 <span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>Bref : on peut faire mieux^<span class="co">[</span><span class="ot">Et d'excellents packages existent pour extraire de magnifiques tables de régression, dont l'excellent `modelsummary` [@modelsummary] ou plus anciennement stargazer qui n'est aujourd'hui plus mis à jour [@stargazer].</span><span class="co">]</span>. J'ai donc rédigé une petite fonction, e que s'apelerio <span class="in">`lm_summary()`</span>, pour extraire les résultats d'un modèle <span class="in">`lm`</span>. Cette fonction prend deux arguments : un modèle linéaire <span class="in">`lm`</span> (duh!) et un argument <span class="in">`vcov`</span> pour spécifier la matrice de variance-covariance à utiliser. Elle s'appuie sur le package <span class="in">`parameters`</span> <span class="co">[</span><span class="ot">@parameters</span><span class="co">]</span> pour extraire les données du modèle linéaire, puis sur <span class="in">`dplyr`</span> <span class="co">[</span><span class="ot">@dplyr</span><span class="co">]</span> pour structurer la table.</span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>Bref : on peut faire mieux^<span class="co">[</span><span class="ot">Et d'excellents packages existent pour extraire de magnifiques tables de régression, dont l'excellent `modelsummary` [@modelsummary] ou plus anciennement `stargazer` qui n'est aujourd'hui plus mis à jour [@stargazer].</span><span class="co">]</span>. J'ai donc rédigé une petite fonction, e que s'apelerio <span class="in">`lm_summary()`</span>, pour extraire les résultats d'un modèle <span class="in">`lm`</span>. Cette fonction prend deux arguments : un modèle linéaire <span class="in">`lm`</span> (duh!) et un argument <span class="in">`vcov`</span> pour spécifier la matrice de variance-covariance à utiliser. Elle s'appuie sur le package <span class="in">`parameters`</span> <span class="co">[</span><span class="ot">@parameters</span><span class="co">]</span> pour extraire les données du modèle linéaire, puis sur <span class="in">`dplyr`</span> <span class="co">[</span><span class="ot">@dplyr</span><span class="co">]</span> pour structurer la table.</span>
 <span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_summary</span></span>
@@ -2000,7 +2000,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
 <span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>Ce dataframe est un bon début à mes yeux, même s'il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <span class="in">`lm_tab()`</span>, s'appuie sur le package <span class="in">`gt`</span> <span class="co">[</span><span class="ot">@gt</span><span class="co">]</span>.</span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>Ce dataframe est un bon début à mes yeux, même s'il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <span class="in">`lm_tab()`</span>, s'appuie principalement sur le package <span class="in">`gt`</span> <span class="co">[</span><span class="ot">@gt</span><span class="co">]</span>.</span>
 <span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_tab</span></span>
@@ -2061,7 +2061,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_tab</span>()</span>
 <span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>Ces fonctions ne me plaisent aujourd'hui qu'à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <span class="in">`lm_summary()`</span> pour renommer les paramètres avant de l'envoyer à <span class="in">`lm_tab`</span>. Si le dataframe est modifié en amont de l'ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner. </span>
+<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>Ces fonctions ne me plaisent aujourd'hui qu'à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <span class="in">`lm_summary()`</span> pour renommer les paramètres avant de l'envoyer à <span class="in">`lm_tab()`</span>. Si le dataframe est modifié en amont de l'ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner. </span>
 <span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>Mais, à défaut, cela permet malgré tout d'obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <span class="in">`gt`</span>, elle peut être exportée via la fonction <span class="in">`gtsave()`</span> pour éviter de s'embêter à copier-coller manuellement les résultats.</span>
 <span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a></span>
