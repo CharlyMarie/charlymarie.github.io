@@ -189,7 +189,6 @@ body.indent-paragraphs .footnotes ul {
   margin-left: 0;
   padding-left: 0;
 }
-/* Prévisualisation des notes (tooltip Quarto) : pas d'indentation */
 body.indent-paragraphs .tippy-content p,
 body.indent-paragraphs .tippy-content li p {
   text-indent: 0 !important;
