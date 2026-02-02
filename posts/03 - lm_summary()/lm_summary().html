@@ -226,6 +226,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#point-de-départ" id="toc-point-de-départ" class="nav-link active" data-scroll-target="#point-de-départ">Point de départ</a></li>
+  <li><a href="#mise-à-jour-du-02.02.2026" id="toc-mise-à-jour-du-02.02.2026" class="nav-link" data-scroll-target="#mise-à-jour-du-02.02.2026">Mise à jour du 02.02.2026</a></li>
   <li><a href="#références" id="toc-références" class="nav-link" data-scroll-target="#références">Références</a></li>
   </ul>
 </nav>
@@ -279,7 +280,7 @@ window.Quarto = {
 <summary>Voir le code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Charger les packages ####</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt);</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt); <span class="fu">library</span>(modelsummary)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">%&gt;%</span></span>
@@ -314,20 +315,20 @@ window.Quarto = {
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_nz7my3798g7h5ks1olci = TinyTable.createTableFunctions("tinytable_nz7my3798g7h5ks1olci");
+      const tableFns_sgf1z1fhsorpp0wlyhih = TinyTable.createTableFunctions("tinytable_sgf1z1fhsorpp0wlyhih");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '8', j: 1 }, { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 }, { i: '8', j: 5 }, { i: '8', j: 6 }, { i: '8', j: 7 }, { i: '8', j: 8 }, { i: '8', j: 9 } ], css_id: 'tinytable_css_r10p0qyk42wfw4kyql4q',}, 
-          { positions: [ { i: '2', j: 1 }, { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 }, { i: '2', j: 6 }, { i: '2', j: 7 }, { i: '2', j: 8 }, { i: '2', j: 9 } ], css_id: 'tinytable_css_t5u08vwlz5xyyve263sb',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_wz1d9dkq9vhpb9gbr3o6',}, 
+          { positions: [ { i: '8', j: 1 }, { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 }, { i: '8', j: 5 }, { i: '8', j: 6 }, { i: '8', j: 7 }, { i: '8', j: 8 }, { i: '8', j: 9 } ], css_id: 'tinytable_css_z8pbis35tuf5zwgt5koa',}, 
+          { positions: [ { i: '2', j: 1 }, { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 }, { i: '2', j: 6 }, { i: '2', j: 7 }, { i: '2', j: 8 }, { i: '2', j: 9 } ], css_id: 'tinytable_css_quhqds81dgwebwbqhtuo',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_aj6a2ds8b5idpe9k8ko5',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_nz7my3798g7h5ks1olci.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_sgf1z1fhsorpp0wlyhih.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -336,12 +337,12 @@ window.Quarto = {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_r10p0qyk42wfw4kyql4q, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_r10p0qyk42wfw4kyql4q {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_t5u08vwlz5xyyve263sb, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_t5u08vwlz5xyyve263sb {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_nz7my3798g7h5ks1olci td.tinytable_css_wz1d9dkq9vhpb9gbr3o6, #tinytable_nz7my3798g7h5ks1olci th.tinytable_css_wz1d9dkq9vhpb9gbr3o6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_sgf1z1fhsorpp0wlyhih td.tinytable_css_z8pbis35tuf5zwgt5koa, #tinytable_sgf1z1fhsorpp0wlyhih th.tinytable_css_z8pbis35tuf5zwgt5koa {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_sgf1z1fhsorpp0wlyhih td.tinytable_css_quhqds81dgwebwbqhtuo, #tinytable_sgf1z1fhsorpp0wlyhih th.tinytable_css_quhqds81dgwebwbqhtuo {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_sgf1z1fhsorpp0wlyhih td.tinytable_css_aj6a2ds8b5idpe9k8ko5, #tinytable_sgf1z1fhsorpp0wlyhih th.tinytable_css_aj6a2ds8b5idpe9k8ko5 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_nz7my3798g7h5ks1olci" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_sgf1z1fhsorpp0wlyhih" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -741,23 +742,23 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
 <div aria-describedby="tbl-regression-lm_tab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="bmfskpsqxg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bmfskpsqxg table {
+<div id="bkqosekfnb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bkqosekfnb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bmfskpsqxg thead, #bmfskpsqxg tbody, #bmfskpsqxg tfoot, #bmfskpsqxg tr, #bmfskpsqxg td, #bmfskpsqxg th {
+#bkqosekfnb thead, #bkqosekfnb tbody, #bkqosekfnb tfoot, #bkqosekfnb tr, #bkqosekfnb td, #bkqosekfnb th {
   border-style: none;
 }
 
-#bmfskpsqxg p {
+#bkqosekfnb p {
   margin: 0;
   padding: 0;
 }
 
-#bmfskpsqxg .gt_table {
+#bkqosekfnb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -783,12 +784,12 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-left-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_caption {
+#bkqosekfnb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bmfskpsqxg .gt_title {
+#bkqosekfnb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -800,7 +801,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-width: 0;
 }
 
-#bmfskpsqxg .gt_subtitle {
+#bkqosekfnb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -812,7 +813,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-top-width: 0;
 }
 
-#bmfskpsqxg .gt_heading {
+#bkqosekfnb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -824,13 +825,13 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_bottom_border {
+#bkqosekfnb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_col_headings {
+#bkqosekfnb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -845,7 +846,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_col_heading {
+#bkqosekfnb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -865,7 +866,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   overflow-x: hidden;
 }
 
-#bmfskpsqxg .gt_column_spanner_outer {
+#bkqosekfnb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -877,15 +878,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 4px;
 }
 
-#bmfskpsqxg .gt_column_spanner_outer:first-child {
+#bkqosekfnb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bmfskpsqxg .gt_column_spanner_outer:last-child {
+#bkqosekfnb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bmfskpsqxg .gt_column_spanner {
+#bkqosekfnb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -897,11 +898,11 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   width: 100%;
 }
 
-#bmfskpsqxg .gt_spanner_row {
+#bkqosekfnb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bmfskpsqxg .gt_group_heading {
+#bkqosekfnb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -927,7 +928,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   text-align: left;
 }
 
-#bmfskpsqxg .gt_empty_group_heading {
+#bkqosekfnb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -942,15 +943,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   vertical-align: middle;
 }
 
-#bmfskpsqxg .gt_from_md > :first-child {
+#bkqosekfnb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bmfskpsqxg .gt_from_md > :last-child {
+#bkqosekfnb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bmfskpsqxg .gt_row {
+#bkqosekfnb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,7 +970,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   overflow-x: hidden;
 }
 
-#bmfskpsqxg .gt_stub {
+#bkqosekfnb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -982,7 +983,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#bmfskpsqxg .gt_stub_row_group {
+#bkqosekfnb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -996,15 +997,15 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   vertical-align: top;
 }
 
-#bmfskpsqxg .gt_row_group_first td {
+#bkqosekfnb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bmfskpsqxg .gt_row_group_first th {
+#bkqosekfnb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bmfskpsqxg .gt_summary_row {
+#bkqosekfnb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1014,16 +1015,16 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#bmfskpsqxg .gt_first_summary_row {
+#bkqosekfnb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_first_summary_row.thick {
+#bkqosekfnb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bmfskpsqxg .gt_last_summary_row {
+#bkqosekfnb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1033,7 +1034,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_grand_summary_row {
+#bkqosekfnb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1043,7 +1044,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#bmfskpsqxg .gt_first_grand_summary_row {
+#bkqosekfnb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1054,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-top-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_last_grand_summary_row_top {
+#bkqosekfnb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1063,11 +1064,11 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_striped {
+#bkqosekfnb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bmfskpsqxg .gt_table_body {
+#bkqosekfnb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1076,7 +1077,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-bottom-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_footnotes {
+#bkqosekfnb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1090,7 +1091,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_footnote {
+#bkqosekfnb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1099,7 +1100,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#bmfskpsqxg .gt_sourcenotes {
+#bkqosekfnb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1113,7 +1114,7 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   border-right-color: #D3D3D3;
 }
 
-#bmfskpsqxg .gt_sourcenote {
+#bkqosekfnb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1121,72 +1122,72 @@ Table&nbsp;3: Régression de la masse des manchots en grammes, sur l’espèce e
   padding-right: 5px;
 }
 
-#bmfskpsqxg .gt_left {
+#bkqosekfnb .gt_left {
   text-align: left;
 }
 
-#bmfskpsqxg .gt_center {
+#bkqosekfnb .gt_center {
   text-align: center;
 }
 
-#bmfskpsqxg .gt_right {
+#bkqosekfnb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bmfskpsqxg .gt_font_normal {
+#bkqosekfnb .gt_font_normal {
   font-weight: normal;
 }
 
-#bmfskpsqxg .gt_font_bold {
+#bkqosekfnb .gt_font_bold {
   font-weight: bold;
 }
 
-#bmfskpsqxg .gt_font_italic {
+#bkqosekfnb .gt_font_italic {
   font-style: italic;
 }
 
-#bmfskpsqxg .gt_super {
+#bkqosekfnb .gt_super {
   font-size: 65%;
 }
 
-#bmfskpsqxg .gt_footnote_marks {
+#bkqosekfnb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bmfskpsqxg .gt_asterisk {
+#bkqosekfnb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bmfskpsqxg .gt_indent_1 {
+#bkqosekfnb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bmfskpsqxg .gt_indent_2 {
+#bkqosekfnb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bmfskpsqxg .gt_indent_3 {
+#bkqosekfnb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bmfskpsqxg .gt_indent_4 {
+#bkqosekfnb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bmfskpsqxg .gt_indent_5 {
+#bkqosekfnb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bmfskpsqxg .katex-display {
+#bkqosekfnb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bmfskpsqxg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bkqosekfnb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1266,6 +1267,210 @@ Table&nbsp;4: Régression de la masse des manchots en grammes, sur l’espèce e
 <p>Ces fonctions ne me plaisent aujourd’hui qu’à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <code>lm_summary()</code> pour renommer les paramètres avant de l’envoyer à <code>lm_tab()</code>. Si le dataframe est modifié en amont de l’ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner.</p>
 <p>Mais, à défaut, cela permet malgré tout d’obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <code>gt</code>, elle peut être exportée via la fonction <code>gtsave()</code> pour éviter de s’embêter à copier-coller manuellement les résultats.</p>
 </section>
+<section id="mise-à-jour-du-02.02.2026" class="level1">
+<h1>Mise à jour du 02.02.2026</h1>
+<p>Suite à la publication de cette note, <a href="https://www.linkedin.com/posts/charlymarie_charly-marie-transformer-une-sortie-r-activity-7421450575659114497-AmQ4?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACjQRJABjSF0B-4aANMnTW7Kr8QDEvmg8AU" target="_blank">il a été demandé</a> “Pourquoi ne pas utiliser sjPlot::tab_model ?”. La question est légitime, je me suis donc essayé à reproduire la <a href="#tbl-regression-lm_tab" class="quarto-xref">Table&nbsp;4</a> via <code>sjPlot::tab_model()</code> <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke, 2026</a>)</span>.</p>
+<p>Partons de la table que la fonction exporte de base, qui est un bon point de départ, même s’il manque à mon sens l’élément le plus important : l’erreur associée au paramètre.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(lm_1)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-regression-model_tab1" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-regression-model_tab1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">masse</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3372.39</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3310.56&nbsp;–&nbsp;3434.21</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">espece [Jugulaire]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">26.92</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-64.52&nbsp;–&nbsp;118.37</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.563</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">espece [Papou]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1377.86</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1300.93&nbsp;–&nbsp;1454.78</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">sexe [Mâle]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">667.56</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">599.29&nbsp;–&nbsp;735.82</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">333</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.847 / 0.845</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-regression-model_tab1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Régression de la masse des manchots en grammes, sur l’espèce et le sexe, selon l’<a href="#eq-un" class="quarto-xref">Équation&nbsp;1</a>. Sortie de la fonction <code>tab_model()</code> de base.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Essayons de la personnaliser, pour afficher cette erreur, réunir l’intervalle de confiance et l’estimation, afficher la statistique <em>t</em> et <span class="math inline">\(\beta\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Voir le code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_model</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Gérer la structure de la table</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.se =</span> T,  <span class="co"># Afficher l'erreur</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.std =</span> T, <span class="co"># Afficher le coefficient standardisé beta </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">std.response =</span> T, <span class="co"># Il faut préciser que la réponse doit aussi être standardisée (autrement, seuls les prédicteurs sont standardisés)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.stat =</span> T,  <span class="co"># Afficher la statistique t</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.order =</span> <span class="fu">c</span>(<span class="st">"est"</span>, <span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"stat"</span>, <span class="st">"p"</span>, <span class="st">"std.est"</span>, <span class="st">"std.se"</span>, <span class="st">"std.ci"</span>), <span class="co"># Personnaliser l'ordre d'affichage des colonnes</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">collapse.ci =</span> T, <span class="co"># Réunir estimations et intervalles de confiance</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv.labels =</span> <span class="st">" "</span>, <span class="co"># Ne pas afficher le nom de la variable Y</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.r2 =</span> F, <span class="co"># Ne pas afficher les coefficients R²</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aspects cosmétiques de la table </span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred.labels =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>, <span class="co"># Modifier les noms des paramètres</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Espèce : Jugulaire"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Espèce : Papou"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Sexe : Mâle"</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">emph.p =</span> F, <span class="co"># Ne pas mettre les p &lt; .05 en gras </span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Renommer les colonnes</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.pred =</span> <span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Predictors</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.est =</span> <span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Estimates</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.se =</span> <span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Std.Error</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.stat =</span> <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, insight<span class="sc">::</span><span class="fu">get_df</span>(lm_1), <span class="st">")&lt;/strong&gt;"</span>),</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.p =</span> <span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.std =</span> <span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-regression-model_tab2" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-regression-model_tab2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="6" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong>Paramètre</strong></td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong>Estimation<br>
+[IC 95 %]</strong></td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong>Erreur standard</strong></td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong>Statistique <em>t</em> (329)</strong></td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong><em>p</em>-valeur</strong></td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;"><strong><em>β</em><br>
+[IC 95 %]</strong></td>
+<td style="text-align: center;">standardized std. Error</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">3372.39<br>
+(3310.56&nbsp;–&nbsp;3434.21)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">31.43</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">107.31</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">&lt;0.001</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-1.04<br>
+(-1.11&nbsp;–&nbsp;-0.96)</td>
+<td style="text-align: center;">0.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Espèce : Jugulaire</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">26.92<br>
+(-64.52&nbsp;–&nbsp;118.37)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">46.48</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.58</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.563</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.03<br>
+(-0.08&nbsp;–&nbsp;0.15)</td>
+<td style="text-align: center;">0.06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Espèce : Papou</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1377.86<br>
+(1300.93&nbsp;–&nbsp;1454.78)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">39.10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">35.24</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">&lt;0.001</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.71<br>
+(1.62&nbsp;–&nbsp;1.81)</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Sexe : Mâle</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">667.56<br>
+(599.29&nbsp;–&nbsp;735.82)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">34.70</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">19.24</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">&lt;0.001</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.83<br>
+(0.74&nbsp;–&nbsp;0.91)</td>
+<td style="text-align: center;">0.04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="6" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">333</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-regression-model_tab2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: Régression de la masse des manchots en grammes, sur l’espèce et le sexe, selon l’<a href="#eq-un" class="quarto-xref">Équation&nbsp;1</a>. Sortie de la fonction <code>tab_model()</code> personnalisée.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Il reste deux problèmes à mon sens :</p>
+<ul>
+<li>En interne, tab_model() a besoin de la colonne de l’erreur standard de <span class="math inline">\(\beta\)</span> (<code>standardized std. Error</code>) pour calculer l’intervalle de confiance. Mais, je ne souhaite pas afficher cette erreur. Donc, je ne peux pas <em>et</em> obtenir l’intervalle de confiance de <span class="math inline">\(\beta\)</span> <em>et</em> ne pas obtenir la colonne d’erreur associée. Il faudrait ruser un peu, pour à la fois la demander, mais ne pas l’afficher, via la modification du style de table en CSS.</li>
+<li>Par défaut, le style de table affiche les noms de colonnes en italique, et je n’arrive pas à ce que cela ne soit pas le cas.</li>
+</ul>
+<p>Pour ces deux points, on pourrait certainement bidouiller quelque chose en HTML et/ou en CSS, mais le ratio temps nécessaire / résultat obtenu m’apparaît largement déficitaire.</p>
+</section>
 <section id="références" class="level1">
 
 
@@ -1288,6 +1493,9 @@ Horst, A. M., Hill, A. P., &amp; Gorman, K. B. (2020). <em>palmerpenguins: Palme
 </div>
 <div id="ref-gt" class="csl-entry" role="listitem">
 Iannone, R., Cheng, J., Schloerke, B., Haughton, S., Hughes, E., Lauer, A., François, R., Seo, J., Brevoort, K., &amp; Roy, O. (2026). <em>gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>
+</div>
+<div id="ref-sjPlot" class="csl-entry" role="listitem">
+Lüdecke, D. (2026). <em>sjPlot: Data Visualization for Statistics in Social Science</em>. <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>
 </div>
 <div id="ref-parameters" class="csl-entry" role="listitem">
 Lüdecke, D., Ben-Shachar, M. S., Patil, I., &amp; Makowski, D. (2020). Extracting, Computing and Exploring the Parameters of Statistical Models using <span>R</span>. <em>Journal of Open Source Software</em>, <em>5</em>(53), 2445. <a href="https://doi.org/10.21105/joss.02445">https://doi.org/10.21105/joss.02445</a>
@@ -1775,297 +1983,353 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Transformer une sortie `R` (moche) en table de résultats (belle)"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 01-26-2026</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ["R", "Modèle linéaire", "Fonction"]</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="an">tags:</span><span class="co"> ["Technique", "R"]</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Les utilisateurs et utilisatrices de `R` le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l'extraction de données et exporter une table de résultats pour un modèle de type `lm()`."</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> fr</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="an">body-classes:</span><span class="co"> indent-paragraphs</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Voir le code"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>&lt;hr style="border:1px solid blue" /&gt;</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="in">#### Construire un thème ggplot() personnalisé ####</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="in"># Quasi entièrement copié d'Andrew Heiss: https://www.andrewheiss.com/blog/2021/12/20/fully-bayesian-ate-iptw/</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="in"># Avec l'aide de Nicolas Rennie: https://nrennie.rbind.io/art-of-viz/programming-languages.html</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse); library(ggtext); library(modelsummary) </span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="in">egypt &lt;- MetBrewer::met.brewer("Egypt")</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="in">theme_nice &lt;- function() {</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal(base_family = "Times") +</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="in">    theme(</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="in">      panel.grid.minor = element_blank(),</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.background = element_rect(fill = "white", color = NA),</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.title = element_textbox_simple(lineheight = 0.5, face = "bold"),</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.subtitle = element_textbox_simple(lineheight = 0.5),</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.caption = element_textbox_simple(lineheight = 0.5),</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title = element_text(face = "bold"),</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.text = element_text(face = "bold", size = rel(0.8), hjust = 0),</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.background = element_rect(fill = "grey80", color = NA),</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.position = "bottom",</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.title=element_blank(),</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="in">      # Rien en X</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title.x=element_blank(),</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.text.x=element_blank(),</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.ticks.x=element_blank())</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in"># Faire de ce thème le thème par défaut</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_nice())</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point de départ</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>Toute personne qui a déjà utilisé <span class="in">`R`</span> est déjà arrivée à la conclusion assez simple que *les sorties en base `R` sont (très) moches et pas (du tout) pratiques*. Commençons par un exemple, pour lequel j'utilise le jeu de données <span class="in">`penguins`</span>, qui contient les observations réalisées sur 344 manchots en Antarctique^<span class="co">[</span><span class="ot">Je vous jure. C'est pas extraordinaire ?!</span><span class="co">] [@palmerpenguins]</span>.</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>Ce jeu contient une observation par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l'année d'observation. </span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>Partons d'une question simple : qu'est-ce qui détermine la masse d'un manchot ? Assez naïvement, je penserais à l'espèce et au sexe du manchot. Nous avons la masse d'un manchot en gramme, le sexe du manchot (mâle ou femelle) et l'espèce du manchot (adélie, jugulaire ou papou^<span class="co">[</span><span class="ot">Je vous encourage mille fois à chercher *Manchot Jugulaire* sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme [celles-ci](https://www.asoc.org/learn/chinstrap-penguins/){target="_blank"} ou [celles-là](https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html){target="_blank"}, qui sont fabuleuses.</span><span class="co">]</span>).</span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-descriptive</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Description des données."</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="do">#### Charger les packages ####</span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt);</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">case_when</span>(</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">~</span> <span class="st">"Adélie"</span>,</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Chinstrap"</span> <span class="sc">~</span> <span class="st">"Jugulaire"</span>,</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Gentoo"</span> <span class="sc">~</span> <span class="st">"Papou"</span>),</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"Femelle"</span>,</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"Mâle"</span>)) <span class="sc">%&gt;%</span> <span class="co"># Traduire les données</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">masse =</span> body_mass_g,</span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">espece =</span> species,</span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexe =</span> sex) <span class="co"># Renommer les colonnes</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(masse, espece, sexe) <span class="sc">%&gt;%</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.x)),</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.x), <span class="st">"Manquant"</span>, .x))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datasummary_skim</span>()</span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>Pour commencer, explorons cette question de façon visuelle.</span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-penguins</span></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Masse des manchots en grammes, selon l’espèce et le sexe"</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(espece, masse, sexe) <span class="sc">%&gt;%</span></span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># Retirer les lignes pour lesquelles une valeur est manquante</span></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> espece, <span class="at">y =</span> masse, <span class="at">fill =</span> sexe) <span class="sc">+</span></span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> F, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> sexe),</span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">1.3</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Masse (g)"</span>,</span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexe"</span>,</span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Masse des manchots, selon l’espèce et le sexe"</span>) <span class="sc">+</span></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>())</span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>La masse semble effectivement dépendre du sexe, et varier selon l'espèce. J'ajuste donc la régression suivante, pour estimer cela de façon quantitative : </span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>\text{masse}_i</span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>= \alpha</span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_1\,X_{1i}</span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_2\,X_{2i}</span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_3\,X_{3i}</span>
-<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\varepsilon_i</span>
-<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>$$ {#eq-un}</span>
-<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>où</span>
-<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>X_{1}=\mathbb{1}(\text{espèce}_i=\text{Jugulaire});\quad</span>
-<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>X_{2}=\mathbb{1}(\text{espèce}_i=\text{Papou});\quad</span>
-<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>X_{3}=\mathbb{1}(\text{sexe}_i=\text{Mâle}).</span>
-<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>La très classique fonction <span class="in">`summary()`</span> renvoie une sortie tout aussi classique de ce modèle. Et tout aussi inélégante. </span>
-<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, output=axis, echo=FALSE}</span></span>
-<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-regression-moche</span></span>
-<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie base r."</span></span>
-<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a><span class="in">lm_1 &lt;- lm(masse ~ espece + sexe, df)</span></span>
-<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="in">summary(lm_1)</span></span>
-<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>A partir d'ici, beaucoup de personnes copient les coefficients dans leur traitement de texte. Avec un ensemble de frictions : </span>
-<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si le modèle change, il faut re-copier les nouvelles estimations. </span>
-<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si l'on copie manuellement, des erreurs peuvent apparaître. </span>
-<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>L'intervalle de confiance n'est pas directement disponible lorsque l'on explore des données^<span class="co">[</span><span class="ot">Peut-être que vous arrivez à calculer `r round(lm_1$coefficients[1], 2)` + (1.96 x `r round(summary(lm_1)$coefficients[1, 2], 2)`) de tête, personnellement, je ne sais pas faire.</span><span class="co">]</span>. </span>
-<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il n'est pas possible d'obtenir un coefficient standardisé type $\beta$ sans ré-ajuster le modèle. Ici, ce n'est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie... </span>
-<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>Bref : on peut faire mieux^<span class="co">[</span><span class="ot">Et d'excellents packages existent pour extraire de magnifiques tables de régression, dont l'excellent `modelsummary` [@modelsummary] ou plus anciennement `stargazer` qui n'est aujourd'hui plus mis à jour [@stargazer].</span><span class="co">]</span>. J'ai donc rédigé une petite fonction, e que s'apelerio <span class="in">`lm_summary()`</span>, pour extraire les résultats d'un modèle <span class="in">`lm`</span>. Cette fonction prend deux arguments : un modèle linéaire <span class="in">`lm`</span> (duh!) et un argument <span class="in">`vcov`</span> pour spécifier la matrice de variance-covariance à utiliser. Elle s'appuie sur le package <span class="in">`parameters`</span> <span class="co">[</span><span class="ot">@parameters</span><span class="co">]</span> pour extraire les données du modèle linéaire, puis sur <span class="in">`dplyr`</span> <span class="co">[</span><span class="ot">@dplyr</span><span class="co">]</span> pour structurer la table.</span>
-<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_summary</span></span>
-<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `knitr::kable()`."</span></span>
-<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>lm_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(model, <span class="at">vcov =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres non standardisés</span></span>
-<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> parameters<span class="sc">::</span><span class="fu">model_parameters</span>(model,</span>
-<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vcov =</span> vcov)</span>
-<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres standardisés (refit le modèle)</span></span>
-<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>  mp_std <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a>    parameters<span class="sc">::</span><span class="fu">model_parameters</span>(</span>
-<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>      model,</span>
-<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardize =</span> <span class="st">"refit"</span>,</span>
-<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> vcov),</span>
-<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>    Parameter,</span>
-<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_Coefficient =</span> Coefficient,</span>
-<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_low =</span> CI_low,</span>
-<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_high =</span> CI_high)</span>
-<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(mp, mp_std, <span class="at">by =</span> <span class="st">"Parameter"</span>)</span>
-<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Préparer les données</span></span>
-<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(mp,</span>
-<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a>                      </span>
-<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir p à trois décimales</span></span>
-<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> .<span class="dv">001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">round</span>(p, <span class="dv">3</span>)),</span>
-<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>                      </span>
-<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir les autres valeurs à deux décimales</span></span>
-<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>                      dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>)),</span>
-<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>                      </span>
-<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de l'estimate et le placer sous le Coefficient</span></span>
-<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Coefficient =</span> <span class="fu">paste0</span>(Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, CI_low, <span class="st">"; "</span>, CI_high, <span class="st">"]"</span>),</span>
-<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>                      </span>
-<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de β et le placer sous β</span></span>
-<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a>                      β <span class="ot">=</span> <span class="fu">paste0</span>(Std_Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, Std_CI_low, <span class="st">"; "</span>, Std_CI_high, <span class="st">"]"</span>),</span>
-<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>                      </span>
-<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Conserver le modèle pour lm_tab, même après des verbes dplyr (mutate, filter, etc.)</span></span>
-<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.model =</span> <span class="fu">list</span>(model))</span>
-<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : les colonnes avec un nom simple</span></span>
-<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(mp,</span>
-<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>                      Paramètre <span class="ot">=</span> Parameter,</span>
-<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Estimation =</span> Coefficient,</span>
-<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Erreur standard"</span> <span class="ot">=</span> SE,</span>
-<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> p)</span>
-<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : la colonne t est un peu plus complexe, car je souhaite y intégrer le nombre de degrés de liberté de la statistique</span></span>
-<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(mp,</span>
-<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>                           <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, broom<span class="sc">::</span><span class="fu">glance</span>(model)<span class="sc">$</span>df.residual, <span class="st">")"</span>),</span>
-<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.cols =</span> t)</span>
-<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas garder les colonnes qui ont déjà été incorporées à d'autres, ou ne sont pas utiles</span></span>
-<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(mp,</span>
-<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span><span class="fu">c</span>(CI, CI_low, CI_high, df_error, Std_Coefficient, Std_CI_low, Std_CI_high))</span>
-<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>  mp</span>
-<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_summary</span>(lm_1) <span class="sc">%&gt;%</span></span>
-<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.model)) <span class="sc">%&gt;%</span> <span class="co"># Une colonne ".model" stocke le modèle, pour pouvoir l'envoyer dans une future fonction. C'est inélégant, mais ça fonctionne.</span></span>
-<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
-<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>Ce dataframe est un bon début à mes yeux, même s'il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <span class="in">`lm_tab()`</span>, s'appuie principalement sur le package <span class="in">`gt`</span> <span class="co">[</span><span class="ot">@gt</span><span class="co">]</span>.</span>
-<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_tab</span></span>
-<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `lm_tab()`."</span></span>
-<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>lm_tab <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_summary) {</span>
-<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">attr</span>(lm_summary, <span class="st">"model"</span>)</span>
-<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model) <span class="sc">&amp;&amp;</span> <span class="st">".model"</span> <span class="sc">%in%</span> <span class="fu">names</span>(lm_summary)) {</span>
-<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> lm_summary<span class="sc">$</span>.model[[<span class="dv">1</span>]]</span>
-<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model)) {</span>
-<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Aucun modèle retrouvé en sortie de lm_summary."</span>)</span>
-<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">glance</span>(lm_model)</span>
-<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a>  t_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")"</span>)</span>
-<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(lm_summary)</span>
-<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas afficher la colonne technique, qui contient le modèle</span></span>
-<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_hide</span>(tab, <span class="at">columns =</span> dplyr<span class="sc">::</span><span class="fu">any_of</span>(<span class="st">".model"</span>))</span>
-<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_label</span>(</span>
-<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>    tab,</span>
-<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>),</span>
-<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimation =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>),</span>
-<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span> <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>),</span>
-<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!!</span><span class="at">t_col :=</span> gt<span class="sc">::</span><span class="fu">html</span>(</span>
-<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")&lt;/strong&gt;"</span>)),</span>
-<span id="cb6-265"><a href="#cb6-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>),</span>
-<span id="cb6-266"><a href="#cb6-266" aria-hidden="true" tabindex="-1"></a>    β <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>))</span>
-<span id="cb6-267"><a href="#cb6-267" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-268"><a href="#cb6-268" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">fmt_markdown</span>(tab, <span class="at">columns =</span> <span class="fu">c</span>(Estimation, β))</span>
-<span id="cb6-269"><a href="#cb6-269" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-270"><a href="#cb6-270" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_align</span>(</span>
-<span id="cb6-271"><a href="#cb6-271" aria-hidden="true" tabindex="-1"></a>    tab,</span>
-<span id="cb6-272"><a href="#cb6-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"center"</span>,</span>
-<span id="cb6-273"><a href="#cb6-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Estimation, <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span>, dplyr<span class="sc">::</span><span class="fu">all_of</span>(t_col), p, β))</span>
-<span id="cb6-274"><a href="#cb6-274" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-275"><a href="#cb6-275" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">tab_source_note</span>(</span>
-<span id="cb6-276"><a href="#cb6-276" aria-hidden="true" tabindex="-1"></a>    tab,</span>
-<span id="cb6-277"><a href="#cb6-277" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">html</span>(<span class="fu">paste0</span>(<span class="st">"&lt;em&gt;Note&lt;/em&gt; : n = "</span>,</span>
-<span id="cb6-278"><a href="#cb6-278" aria-hidden="true" tabindex="-1"></a>                    scales<span class="sc">::</span><span class="fu">number</span>(g<span class="sc">$</span>nobs),</span>
-<span id="cb6-279"><a href="#cb6-279" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" observations."</span>)))</span>
-<span id="cb6-280"><a href="#cb6-280" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-281"><a href="#cb6-281" aria-hidden="true" tabindex="-1"></a>  tab</span>
-<span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
-<span id="cb6-285"><a href="#cb6-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_summary</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-286"><a href="#cb6-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-287"><a href="#cb6-287" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> <span class="fu">case_when</span>(</span>
-<span id="cb6-288"><a href="#cb6-288" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especeJugulaire"</span> <span class="sc">~</span> <span class="st">"Espèce : Jugulaire"</span>,</span>
-<span id="cb6-289"><a href="#cb6-289" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especePapou"</span> <span class="sc">~</span> <span class="st">"Espèce : Papou"</span>,</span>
-<span id="cb6-290"><a href="#cb6-290" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"sexeMâle"</span> <span class="sc">~</span> <span class="st">"Sexe : Mâle"</span>,</span>
-<span id="cb6-291"><a href="#cb6-291" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> Paramètre)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-292"><a href="#cb6-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_tab</span>()</span>
-<span id="cb6-293"><a href="#cb6-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-294"><a href="#cb6-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-295"><a href="#cb6-295" aria-hidden="true" tabindex="-1"></a>Ces fonctions ne me plaisent aujourd'hui qu'à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <span class="in">`lm_summary()`</span> pour renommer les paramètres avant de l'envoyer à <span class="in">`lm_tab()`</span>. Si le dataframe est modifié en amont de l'ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner. </span>
-<span id="cb6-296"><a href="#cb6-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-297"><a href="#cb6-297" aria-hidden="true" tabindex="-1"></a>Mais, à défaut, cela permet malgré tout d'obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <span class="in">`gt`</span>, elle peut être exportée via la fonction <span class="in">`gtsave()`</span> pour éviter de s'embêter à copier-coller manuellement les résultats.</span>
-<span id="cb6-298"><a href="#cb6-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-299"><a href="#cb6-299" aria-hidden="true" tabindex="-1"></a><span class="fu"># Références</span></span>
+<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Transformer une sortie `R` (moche) en table de résultats (belle)"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 01-26-2026</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> ["R", "Modèle linéaire", "Fonction"]</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="an">tags:</span><span class="co"> ["Technique", "R"]</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Les utilisateurs et utilisatrices de `R` le savent bien : les sorties de base sont hideuses. Je propose quelques fonctions assez basiques pour simplifier l'extraction de données et exporter une table de résultats pour un modèle de type `lm()`."</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> fr</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="an">body-classes:</span><span class="co"> indent-paragraphs</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Voir le code"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>&lt;hr style="border:1px solid blue" /&gt;</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="in">#### Construire un thème ggplot() personnalisé ####</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="in"># Quasi entièrement copié d'Andrew Heiss: https://www.andrewheiss.com/blog/2021/12/20/fully-bayesian-ate-iptw/</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="in"># Avec l'aide de Nicolas Rennie: https://nrennie.rbind.io/art-of-viz/programming-languages.html</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse); library(ggtext)</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="in">egypt &lt;- MetBrewer::met.brewer("Egypt")</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="in">theme_nice &lt;- function() {</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal(base_family = "Times") +</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">    theme(</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="in">      panel.grid.minor = element_blank(),</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.background = element_rect(fill = "white", color = NA),</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.title = element_textbox_simple(lineheight = 0.5, face = "bold"),</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.subtitle = element_textbox_simple(lineheight = 0.5),</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="in">      plot.caption = element_textbox_simple(lineheight = 0.5),</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title = element_text(face = "bold"),</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.text = element_text(face = "bold", size = rel(0.8), hjust = 0),</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="in">      strip.background = element_rect(fill = "grey80", color = NA),</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.position = "bottom",</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="in">      legend.title=element_blank(),</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="in">      # Rien en X</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.title.x=element_blank(),</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.text.x=element_blank(),</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="in">      axis.ticks.x=element_blank())</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="in"># Faire de ce thème le thème par défaut</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_nice())</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point de départ</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>Toute personne qui a déjà utilisé <span class="in">`R`</span> est déjà arrivée à la conclusion assez simple que *les sorties en base `R` sont (très) moches et pas (du tout) pratiques*. Commençons par un exemple, pour lequel j'utilise le jeu de données <span class="in">`penguins`</span>, qui contient les observations réalisées sur 344 manchots en Antarctique^<span class="co">[</span><span class="ot">Je vous jure. C'est pas extraordinaire ?!</span><span class="co">] [@palmerpenguins]</span>.</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>Ce jeu contient une observation par manchot : son sexe, espèce, la longueur de son bec, la profondeur de son bec, la longueur de nageoire, sa masse, et l'année d'observation. </span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>Partons d'une question simple : qu'est-ce qui détermine la masse d'un manchot ? Assez naïvement, je penserais à l'espèce et au sexe du manchot. Nous avons la masse d'un manchot en gramme, le sexe du manchot (mâle ou femelle) et l'espèce du manchot (adélie, jugulaire ou papou^<span class="co">[</span><span class="ot">Je vous encourage mille fois à chercher *Manchot Jugulaire* sur votre moteur de recherches préféré, vous pourriez tomber sur des photos comme [celles-ci](https://www.asoc.org/learn/chinstrap-penguins/){target="_blank"} ou [celles-là](https://www.oiseaux.net/oiseaux/manchot.a.jugulaire.html){target="_blank"}, qui sont fabuleuses.</span><span class="co">]</span>).</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-descriptive</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Description des données."</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="do">#### Charger les packages ####</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse);</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easystats); <span class="fu">library</span>(gt); <span class="fu">library</span>(modelsummary)</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">~</span> <span class="st">"Adélie"</span>,</span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Chinstrap"</span> <span class="sc">~</span> <span class="st">"Jugulaire"</span>,</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>      species <span class="sc">==</span> <span class="st">"Gentoo"</span> <span class="sc">~</span> <span class="st">"Papou"</span>),</span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="st">"Femelle"</span>,</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="st">"Mâle"</span>)) <span class="sc">%&gt;%</span> <span class="co"># Traduire les données</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">masse =</span> body_mass_g,</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">espece =</span> species,</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexe =</span> sex) <span class="co"># Renommer les colonnes</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(masse, espece, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">is.numeric</span>(.x)),</span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.x), <span class="st">"Manquant"</span>, .x))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datasummary_skim</span>()</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>Pour commencer, explorons cette question de façon visuelle.</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-penguins</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Masse des manchots en grammes, selon l’espèce et le sexe"</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(espece, masse, sexe) <span class="sc">%&gt;%</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># Retirer les lignes pour lesquelles une valeur est manquante</span></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> espece, <span class="at">y =</span> masse, <span class="at">fill =</span> sexe) <span class="sc">+</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> F, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">colour =</span> sexe),</span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">1.3</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Femelle =</span> egypt[<span class="dv">1</span>], Mâle <span class="ot">=</span> egypt[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Masse (g)"</span>,</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexe"</span>,</span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Masse des manchots, selon l’espèce et le sexe"</span>) <span class="sc">+</span></span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>())</span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>La masse semble effectivement dépendre du sexe, et varier selon l'espèce. J'ajuste donc la régression suivante, pour estimer cela de façon quantitative : </span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>\text{masse}_i</span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>= \alpha</span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_1\,X_{1i}</span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_2\,X_{2i}</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\beta_3\,X_{3i}</span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\varepsilon_i</span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>$$ {#eq-un}</span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>où</span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>X_{1}=\mathbb{1}(\text{espèce}_i=\text{Jugulaire});\quad</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>X_{2}=\mathbb{1}(\text{espèce}_i=\text{Papou});\quad</span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>X_{3}=\mathbb{1}(\text{sexe}_i=\text{Mâle}).</span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>La très classique fonction <span class="in">`summary()`</span> renvoie une sortie tout aussi classique de ce modèle. Et tout aussi inélégante. </span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, output=axis, echo=FALSE}</span></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-regression-moche</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie base r."</span></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a><span class="in">lm_1 &lt;- lm(masse ~ espece + sexe, df)</span></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="in">summary(lm_1)</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>A partir d'ici, beaucoup de personnes copient les coefficients dans leur traitement de texte. Avec un ensemble de frictions : </span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si le modèle change, il faut re-copier les nouvelles estimations. </span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Si l'on copie manuellement, des erreurs peuvent apparaître. </span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>L'intervalle de confiance n'est pas directement disponible lorsque l'on explore des données^<span class="co">[</span><span class="ot">Peut-être que vous arrivez à calculer `r round(lm_1$coefficients[1], 2)` + (1.96 x `r round(summary(lm_1)$coefficients[1, 2], 2)`) de tête, personnellement, je ne sais pas faire.</span><span class="co">]</span>. </span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il n'est pas possible d'obtenir un coefficient standardisé type $\beta$ sans ré-ajuster le modèle. Ici, ce n'est peut-être pas nécessaire car les quantités estimées ont un sens. Mais en psychologie... </span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>Bref : on peut faire mieux^<span class="co">[</span><span class="ot">Et d'excellents packages existent pour extraire de magnifiques tables de régression, dont l'excellent `modelsummary` [@modelsummary] ou plus anciennement `stargazer` qui n'est aujourd'hui plus mis à jour [@stargazer].</span><span class="co">]</span>. J'ai donc rédigé une petite fonction, e que s'apelerio <span class="in">`lm_summary()`</span>, pour extraire les résultats d'un modèle <span class="in">`lm`</span>. Cette fonction prend deux arguments : un modèle linéaire <span class="in">`lm`</span> (duh!) et un argument <span class="in">`vcov`</span> pour spécifier la matrice de variance-covariance à utiliser. Elle s'appuie sur le package <span class="in">`parameters`</span> <span class="co">[</span><span class="ot">@parameters</span><span class="co">]</span> pour extraire les données du modèle linéaire, puis sur <span class="in">`dplyr`</span> <span class="co">[</span><span class="ot">@dplyr</span><span class="co">]</span> pour structurer la table.</span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_summary</span></span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `knitr::kable()`."</span></span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a>lm_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(model, <span class="at">vcov =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres non standardisés</span></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> parameters<span class="sc">::</span><span class="fu">model_parameters</span>(model,</span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vcov =</span> vcov)</span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extraire les paramètres standardisés (refit le modèle)</span></span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>  mp_std <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a>    parameters<span class="sc">::</span><span class="fu">model_parameters</span>(</span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardize =</span> <span class="st">"refit"</span>,</span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a>      <span class="at">vcov =</span> vcov),</span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>    Parameter,</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_Coefficient =</span> Coefficient,</span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_low =</span> CI_low,</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std_CI_high =</span> CI_high)</span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(mp, mp_std, <span class="at">by =</span> <span class="st">"Parameter"</span>)</span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Préparer les données</span></span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(mp,</span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir p à trois décimales</span></span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> .<span class="dv">001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">round</span>(p, <span class="dv">3</span>)),</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Arrondir les autres valeurs à deux décimales</span></span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>                      dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>)),</span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de l'estimate et le placer sous le Coefficient</span></span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Coefficient =</span> <span class="fu">paste0</span>(Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, CI_low, <span class="st">"; "</span>, CI_high, <span class="st">"]"</span>),</span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Réunir l'intervalle de confiance de β et le placer sous β</span></span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a>                      β <span class="ot">=</span> <span class="fu">paste0</span>(Std_Coefficient, <span class="st">"&lt;br&gt;"</span>, <span class="st">"["</span>, Std_CI_low, <span class="st">"; "</span>, Std_CI_high, <span class="st">"]"</span>),</span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># Conserver le modèle pour lm_tab, même après des verbes dplyr (mutate, filter, etc.)</span></span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.model =</span> <span class="fu">list</span>(model))</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : les colonnes avec un nom simple</span></span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(mp,</span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>                      Paramètre <span class="ot">=</span> Parameter,</span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Estimation =</span> Coefficient,</span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Erreur standard"</span> <span class="ot">=</span> SE,</span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a>                      <span class="at">p =</span> p)</span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Renommer les colonnes : la colonne t est un peu plus complexe, car je souhaite y intégrer le nombre de degrés de liberté de la statistique</span></span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename_with</span>(mp,</span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a>                           <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, broom<span class="sc">::</span><span class="fu">glance</span>(model)<span class="sc">$</span>df.residual, <span class="st">")"</span>),</span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.cols =</span> t)</span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas garder les colonnes qui ont déjà été incorporées à d'autres, ou ne sont pas utiles</span></span>
+<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(mp,</span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">-</span><span class="fu">c</span>(CI, CI_low, CI_high, df_error, Std_Coefficient, Std_CI_low, Std_CI_high))</span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>  mp</span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_summary</span>(lm_1) <span class="sc">%&gt;%</span></span>
+<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.model)) <span class="sc">%&gt;%</span> <span class="co"># Une colonne ".model" stocke le modèle, pour pouvoir l'envoyer dans une future fonction. C'est inélégant, mais ça fonctionne.</span></span>
+<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a>Ce dataframe est un bon début à mes yeux, même s'il a des limites. Je combine cette fonction avec une seconde, qui va mettre cette table en forme. Celle-ci, <span class="in">`lm_tab()`</span>, s'appuie principalement sur le package <span class="in">`gt`</span> <span class="co">[</span><span class="ot">@gt</span><span class="co">]</span>.</span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-lm_tab</span></span>
+<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `lm_summary()` passée via `lm_tab()`."</span></span>
+<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a>lm_tab <span class="ot">&lt;-</span> <span class="cf">function</span>(lm_summary) {</span>
+<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">attr</span>(lm_summary, <span class="st">"model"</span>)</span>
+<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model) <span class="sc">&amp;&amp;</span> <span class="st">".model"</span> <span class="sc">%in%</span> <span class="fu">names</span>(lm_summary)) {</span>
+<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> lm_summary<span class="sc">$</span>.model[[<span class="dv">1</span>]]</span>
+<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(lm_model)) {</span>
+<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Aucun modèle retrouvé en sortie de lm_summary."</span>)</span>
+<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">glance</span>(lm_model)</span>
+<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a>  t_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Statistique t ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")"</span>)</span>
+<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">gt</span>(lm_summary)</span>
+<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ne pas afficher la colonne technique, qui contient le modèle</span></span>
+<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_hide</span>(tab, <span class="at">columns =</span> dplyr<span class="sc">::</span><span class="fu">any_of</span>(<span class="st">".model"</span>))</span>
+<span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_label</span>(</span>
+<span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>),</span>
+<span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimation =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>),</span>
+<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span> <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>),</span>
+<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!!</span><span class="at">t_col :=</span> gt<span class="sc">::</span><span class="fu">html</span>(</span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, g<span class="sc">$</span>df.residual, <span class="st">")&lt;/strong&gt;"</span>)),</span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>),</span>
+<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a>    β <span class="ot">=</span> gt<span class="sc">::</span><span class="fu">html</span>(<span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>))</span>
+<span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">fmt_markdown</span>(tab, <span class="at">columns =</span> <span class="fu">c</span>(Estimation, β))</span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">cols_align</span>(</span>
+<span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"center"</span>,</span>
+<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Estimation, <span class="st">`</span><span class="at">Erreur standard</span><span class="st">`</span>, dplyr<span class="sc">::</span><span class="fu">all_of</span>(t_col), p, β))</span>
+<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-275"><a href="#cb8-275" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> gt<span class="sc">::</span><span class="fu">tab_source_note</span>(</span>
+<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a>    tab,</span>
+<span id="cb8-277"><a href="#cb8-277" aria-hidden="true" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">html</span>(<span class="fu">paste0</span>(<span class="st">"&lt;em&gt;Note&lt;/em&gt; : n = "</span>,</span>
+<span id="cb8-278"><a href="#cb8-278" aria-hidden="true" tabindex="-1"></a>                    scales<span class="sc">::</span><span class="fu">number</span>(g<span class="sc">$</span>nobs),</span>
+<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" observations."</span>)))</span>
+<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-281"><a href="#cb8-281" aria-hidden="true" tabindex="-1"></a>  tab</span>
+<span id="cb8-282"><a href="#cb8-282" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
+<span id="cb8-285"><a href="#cb8-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_summary</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-286"><a href="#cb8-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-287"><a href="#cb8-287" aria-hidden="true" tabindex="-1"></a>    Paramètre <span class="ot">=</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-288"><a href="#cb8-288" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especeJugulaire"</span> <span class="sc">~</span> <span class="st">"Espèce : Jugulaire"</span>,</span>
+<span id="cb8-289"><a href="#cb8-289" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"especePapou"</span> <span class="sc">~</span> <span class="st">"Espèce : Papou"</span>,</span>
+<span id="cb8-290"><a href="#cb8-290" aria-hidden="true" tabindex="-1"></a>      Paramètre <span class="sc">==</span> <span class="st">"sexeMâle"</span> <span class="sc">~</span> <span class="st">"Sexe : Mâle"</span>,</span>
+<span id="cb8-291"><a href="#cb8-291" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> Paramètre)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-292"><a href="#cb8-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm_tab</span>()</span>
+<span id="cb8-293"><a href="#cb8-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-294"><a href="#cb8-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-295"><a href="#cb8-295" aria-hidden="true" tabindex="-1"></a>Ces fonctions ne me plaisent aujourd'hui qu'à moitié, car elles nécessitent de modifier manuellement le dataframe en sortie de <span class="in">`lm_summary()`</span> pour renommer les paramètres avant de l'envoyer à <span class="in">`lm_tab()`</span>. Si le dataframe est modifié en amont de l'ajustement du modèle, le pipe peut casser et la fonction ne plus fonctionner. </span>
+<span id="cb8-296"><a href="#cb8-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-297"><a href="#cb8-297" aria-hidden="true" tabindex="-1"></a>Mais, à défaut, cela permet malgré tout d'obtenir une table qui synthétise toutes les informations nécessaires de façon élégante. De plus, cette table étant un objet <span class="in">`gt`</span>, elle peut être exportée via la fonction <span class="in">`gtsave()`</span> pour éviter de s'embêter à copier-coller manuellement les résultats.</span>
+<span id="cb8-298"><a href="#cb8-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-299"><a href="#cb8-299" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mise à jour du 02.02.2026</span></span>
+<span id="cb8-300"><a href="#cb8-300" aria-hidden="true" tabindex="-1"></a>Suite à la publication de cette note, <span class="co">[</span><span class="ot">il a été demandé</span><span class="co">](https://www.linkedin.com/posts/charlymarie_charly-marie-transformer-une-sortie-r-activity-7421450575659114497-AmQ4?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACjQRJABjSF0B-4aANMnTW7Kr8QDEvmg8AU)</span>{target="_blank"} "Pourquoi ne pas utiliser sjPlot::tab_model ?". La question est légitime, je me suis donc essayé à reproduire la @tbl-regression-lm_tab via <span class="in">`sjPlot::tab_model()`</span> <span class="co">[</span><span class="ot">@sjPlot</span><span class="co">]</span>.</span>
+<span id="cb8-301"><a href="#cb8-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-302"><a href="#cb8-302" aria-hidden="true" tabindex="-1"></a>Partons de la table que la fonction exporte de base, qui est un bon point de départ, même s'il manque à mon sens l'élément le plus important : l'erreur associée au paramètre.</span>
+<span id="cb8-303"><a href="#cb8-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-model_tab1</span></span>
+<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `tab_model()` de base."</span></span>
+<span id="cb8-309"><a href="#cb8-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(lm_1)</span>
+<span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a>Essayons de la personnaliser, pour afficher cette erreur, réunir l'intervalle de confiance et l'estimation, afficher la statistique *t* et $\beta$.</span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-regression-model_tab2</span></span>
+<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Régression de la masse des manchots en grammes, sur l'espèce et le sexe, selon l'@eq-un. Sortie de la fonction `tab_model()` personnalisée."</span></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a>lm_1 <span class="sc">%&gt;%</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_model</span>(</span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Gérer la structure de la table</span></span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.se =</span> T,  <span class="co"># Afficher l'erreur</span></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.std =</span> T, <span class="co"># Afficher le coefficient standardisé beta </span></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a>    <span class="at">std.response =</span> T, <span class="co"># Il faut préciser que la réponse doit aussi être standardisée (autrement, seuls les prédicteurs sont standardisés)</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.stat =</span> T,  <span class="co"># Afficher la statistique t</span></span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.order =</span> <span class="fu">c</span>(<span class="st">"est"</span>, <span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"stat"</span>, <span class="st">"p"</span>, <span class="st">"std.est"</span>, <span class="st">"std.se"</span>, <span class="st">"std.ci"</span>), <span class="co"># Personnaliser l'ordre d'affichage des colonnes</span></span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>    <span class="at">collapse.ci =</span> T, <span class="co"># Réunir estimations et intervalles de confiance</span></span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv.labels =</span> <span class="st">" "</span>, <span class="co"># Ne pas afficher le nom de la variable Y</span></span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.r2 =</span> F, <span class="co"># Ne pas afficher les coefficients R²</span></span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Aspects cosmétiques de la table </span></span>
+<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred.labels =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>, <span class="co"># Modifier les noms des paramètres</span></span>
+<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Espèce : Jugulaire"</span>,</span>
+<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Espèce : Papou"</span>,</span>
+<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Sexe : Mâle"</span>),</span>
+<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a>    <span class="at">emph.p =</span> F, <span class="co"># Ne pas mettre les p &lt; .05 en gras </span></span>
+<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Renommer les colonnes</span></span>
+<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.pred =</span> <span class="st">"&lt;strong&gt;Paramètre&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Predictors</span></span>
+<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.est =</span> <span class="st">"&lt;strong&gt;Estimation&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Estimates</span></span>
+<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.se =</span> <span class="st">"&lt;strong&gt;Erreur standard&lt;/strong&gt;"</span>, <span class="co"># Renommer la colonne Std.Error</span></span>
+<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.stat =</span> <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Statistique &lt;em&gt;t&lt;/em&gt; ("</span>, insight<span class="sc">::</span><span class="fu">get_df</span>(lm_1), <span class="st">")&lt;/strong&gt;"</span>),</span>
+<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.p =</span> <span class="st">"&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;-valeur&lt;/strong&gt;"</span>,</span>
+<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a>    <span class="at">string.std =</span> <span class="st">"&lt;strong&gt;&lt;em&gt;β&lt;/em&gt;&lt;br&gt;[IC 95 %]&lt;/strong&gt;"</span>)</span>
+<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a>Il reste deux problèmes à mon sens : </span>
+<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>En interne, tab_model() a besoin de la colonne de l'erreur standard de $\beta$ (<span class="in">`standardized std. Error`</span>) pour calculer l'intervalle de confiance. Mais, je ne souhaite pas afficher cette erreur. Donc, je ne peux pas *et* obtenir l'intervalle de confiance de $\beta$ *et* ne pas obtenir la colonne d'erreur associée. Il faudrait ruser un peu, pour à la fois la demander, mais ne pas l'afficher, via la modification du style de table en CSS. </span>
+<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Par défaut, le style de table affiche les noms de colonnes en italique, et je n'arrive pas à ce que cela ne soit pas le cas. </span>
+<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a>Pour ces deux points, on pourrait certainement bidouiller quelque chose en HTML et/ou en CSS, mais le ratio temps nécessaire / résultat obtenu m'apparaît largement déficitaire.</span>
+<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a><span class="fu"># Références</span></span>
 </code><button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
