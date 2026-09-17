@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='518.40pt' height='360.00pt' viewBox='0 0 518.40 360.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1MTguNDB8MC4wMHwzNjAuMDA='>
+    <rect x='0.00' y='0.00' width='518.40' height='360.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1MTguNDB8MC4wMHwzNjAuMDA=)'>
+<rect x='0.00' y='0.00' width='518.40' height='360.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMzYuMjB8NTEyLjkyfDI2LjgwfDM1NC41Mg=='>
+    <rect x='36.20' y='26.80' width='476.72' height='327.72' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzYuMjB8NTEyLjkyfDI2LjgwfDM1NC41Mg==)'>
+<polyline points='36.20,354.52 512.92,354.52 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='36.20,272.59 512.92,272.59 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='36.20,190.66 512.92,190.66 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='36.20,108.73 512.92,108.73 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='36.20,26.80 512.92,26.80 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='274.56,354.52 274.56,26.80 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<circle cx='274.56' cy='305.61' r='1.95' style='stroke-width: 0.71; fill: #000000;' />
+<polyline points='274.56,301.55 274.56,301.55 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='274.56,301.55 274.56,309.68 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='274.56,309.68 274.56,309.68 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+</g>
+<g clip-path='url(#cpMC4wMHw1MTguNDB8MC4wMHwzNjAuMDA=)'>
+<text x='31.27' y='357.43' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Times";' textLength='4.41px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='31.27' y='275.50' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Times";' textLength='8.81px' lengthAdjust='spacingAndGlyphs'>25</text>
+<text x='31.27' y='193.57' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Times";' textLength='8.81px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='31.27' y='111.64' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Times";' textLength='8.81px' lengthAdjust='spacingAndGlyphs'>75</text>
+<text x='31.27' y='29.71' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Times";' textLength='13.22px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text transform='translate(12.92,190.66) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-weight: bold; font-family: "Times";' textLength='39.72px' lengthAdjust='spacingAndGlyphs'>Réponse</text>
+<text x='36.20' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='23.25px' lengthAdjust='spacingAndGlyphs'>Point</text>
+<text x='62.20' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='7.94px' lengthAdjust='spacingAndGlyphs'>et</text>
+<text x='72.89' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='45.81px' lengthAdjust='spacingAndGlyphs'>intervalles</text>
+<text x='121.45' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='10.38px' lengthAdjust='spacingAndGlyphs'>de</text>
+<text x='134.58' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='42.12px' lengthAdjust='spacingAndGlyphs'>confiance</text>
+<text x='179.45' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='4.88px' lengthAdjust='spacingAndGlyphs'>à</text>
+<text x='187.08' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='11.00px' lengthAdjust='spacingAndGlyphs'>95</text>
+<text x='200.83' y='24.40' style='font-size: 11.00px; font-family: "Times";' textLength='11.91px' lengthAdjust='spacingAndGlyphs'>%.</text>
+<text x='36.20' y='14.39' style='font-size: 13.20px; font-weight: bold; font-family: "Times";' textLength='27.83px' lengthAdjust='spacingAndGlyphs'>Effet</text>
+<text x='67.33' y='14.39' style='font-size: 13.20px; font-weight: bold; font-family: "Times";' textLength='13.19px' lengthAdjust='spacingAndGlyphs'>de</text>
+<text x='83.81' y='14.39' style='font-size: 13.20px; font-weight: bold; font-family: "Times";' textLength='59.31px' lengthAdjust='spacingAndGlyphs'>traitement</text>
+<text x='146.42' y='14.39' style='font-size: 13.20px; font-weight: bold; font-family: "Times";' textLength='37.36px' lengthAdjust='spacingAndGlyphs'>moyen</text>
+</g>
+</g>
+</svg>
